@@ -18,4 +18,11 @@ Uma ferramenta de rede com interface gráfica desenvolvida em Python e Tkinter. 
 
 ---
 
+### 2. Laboratório de Automação com Ansible
+
+Um laboratório de automação completo criado com VirtualBox e três instâncias do Ubuntu Server 24.10. O projeto simula um ambiente real onde um Nó de Controle gerencia a configuração de múltiplos servidores de forma programática, utilizando playbooks Ansible.
+
+**Tecnologias:** Ansible, YAML, VirtualBox, Ubuntu Server, SSH, IaC (Infraestrutura como Código).
+
+➡️ **[Ver documentação técnica e playbook no repositório](https://github.com/jonatas-pimenta/laboratorio-ansible)**
 *(Aqui você adicionará seus futuros projetos)*
