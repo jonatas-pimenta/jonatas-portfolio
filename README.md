@@ -25,4 +25,4 @@ Um laboratório de automação completo criado com VirtualBox e três instância
 **Tecnologias:** Ansible, YAML, VirtualBox, Ubuntu Server, SSH, IaC (Infraestrutura como Código).
 
 ➡️ **[Ver documentação técnica e playbook no repositório](https://github.com/jonatas-pimenta/laboratorio-ansible)**
-*(Aqui você adicionará seus futuros projetos)*
+
