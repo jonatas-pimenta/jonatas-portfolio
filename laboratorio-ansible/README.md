@@ -66,6 +66,13 @@ Os servidores que serão configurados pelo Ansible (neste projeto, um servidor U
 - `README.md`: Este arquivo.
 - `diagrama-arquitetura.png`: Imagem do diagrama da arquitetura.
 
+## Screenshot
+
+<p align="center">
+  <img src="resultado-playbook.png" width="48%">
+</p>
+
+
 ---
 <details>
 <summary><strong>Código do Playbook (`instalar_programas.yml`)</strong></summary>
