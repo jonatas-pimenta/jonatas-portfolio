@@ -1,40 +1,38 @@
-# Portfólio de Projetos 
+# 💼 Portfólio Profissional – Jonatas Pimenta
 
-👋 Olá! Seja bem-vindo ao meu portfólio profissional. Aqui você encontrará uma seleção de projetos que desenvolvi nas áreas de infraestrutura de redes, análise de dados, desenvolvimento web e automação.
+Olá! Seja bem-vindo ao meu portfólio de projetos. Aqui você encontrará uma seleção dos meus trabalhos nas áreas de infraestrutura de redes, automação, análise de dados, cibersegurança e desenvolvimento de software.
 
-Cada projeto reflete minha paixão por tecnologia, minha capacidade de resolver problemas reais e meu comprometimento com soluções práticas e bem estruturadas.
-
-Explore à vontade!!!
+Cada projeto foi pensado para resolver problemas reais, aplicar boas práticas de tecnologia e demonstrar meu aprendizado prático.
 
 ---
 
-## Projetos
+## 📁 Estrutura por Áreas
 
-### 1. Network Tool GUI
+### 🔧 Dev (Desenvolvimento)
+- [`network-tool-gui`](./dev/network-tool-gui) – Aplicação em Python com interface gráfica para diagnóstico e escaneamento de rede.
+- [`customer-payment-checker`](./dev/customer-payment-checker) – Automação com Selenium para consulta de status de pagamento via CPF.
 
-Uma ferramenta de rede com interface gráfica desenvolvida em Python e Tkinter. Projetada para ser uma solução completa e amigável para tarefas comuns de diagnóstico e segurança de rede.
+### 🚀 DevOps
+- [`laboratorio-ansible`](./devops/laboratorio-ansible) – Automação de instalação de pacotes e configurações em múltiplas VMs usando Ansible.
 
-**Tecnologias:** Python, Tkinter, Multithreading, Subprocess.
+### 🌐 Redes
+- [`network-lab-corporativo`](./redes/network-lab-corporativo) – Simulação de rede corporativa no Cisco Packet Tracer com VLANs, roteamento, ACLs e DHCP.
 
-**[➡️ Ver detalhes e código do projeto](./network-tool-gui/README.md)**
+### 🔐 Cibersegurança
+*(Em breve)* Projetos de análise de pacotes com Wireshark e automação de auditorias.
 
----
-
-### 2. Laboratório de Automação com Ansible
-
-Um laboratório de Infraestrutura como Código (IaC) onde um Nó de Controle com Ansible orquestra a configuração de um Nó Gerenciado. O projeto utiliza um playbook YAML para automatizar tarefas essenciais, como a instalação de um ambiente web com Apache2, tudo em um ambiente **headless (sem interface gráfica)** com Ubuntu Server 24.10.
-
-**Tecnologias:** Ansible, YAML, VirtualBox, Ubuntu Server, SSH, IaC.
-
-**[➡️ Ver documentação técnica e playbook no projeto](./laboratorio-ansible/README.md)**
+### 📊 Análise de Dados
+*(Em breve)* Dashboards e análise de dados com Python, Power BI e Pandas.
 
 ---
 
-### 3. Network Lab Corporativo – Simulação de Rede com VLANs e Segurança
+## 👨‍💻 Sobre mim
 
-Projeto desenvolvido no simulador Cisco Packet Tracer (versão 8.2.2.0400) para representar uma rede corporativa com topologia em camadas, VLANs, roteamento inter-VLAN, DHCP, NAT e ACLs. Inclui configurações manuais dos dispositivos e documentação detalhada.
+Sou estudante de Redes de Computadores na FATEC Indaiatuba, apaixonado por tecnologia e em busca de oportunidades de estágio nas áreas de infraestrutura, automação e segurança da informação.
 
-**Tecnologias:** Cisco Packet Tracer, VLAN, Roteamento, ACL, DHCP, NAT.
+📫 Contato: [LinkedIn](https://www.linkedin.com/in/jonatas-pimenta)
 
-**[➡️ Ver topologia, configurações e documentação](./network-lab-corporativo/README.md)**
+---
+
+> _“Tecnologia bem aplicada transforma realidades.”_
 
