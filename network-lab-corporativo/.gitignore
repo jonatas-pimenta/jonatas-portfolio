@@ -1,0 +1,19 @@
+# Arquivos temporários do Packet Tracer
+*.tmp
+*.bak
+*.backup
+
+# Arquivos de log
+*.log
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos do VS Code
+.vscode/
+
+# Arquivos temporários diversos
+*~
+*.swp
+*.swo
