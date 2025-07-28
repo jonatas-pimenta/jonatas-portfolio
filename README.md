@@ -26,5 +26,15 @@ Um laboratório de Infraestrutura como Código (IaC) onde um Nó de Controle com
 
 **Tecnologias:** Ansible, YAML, VirtualBox, Ubuntu Server, SSH, IaC.
 
-➡️ **[Ver documentação técnica e playbook no repositório](./laboratorio-ansible/README.md)**
+**[➡️ Ver documentação técnica e playbook no projeto](./laboratorio-ansible/README.md)**
+
+---
+
+### 3. Network Lab Corporativo – Simulação de Rede com VLANs e Segurança
+
+Projeto desenvolvido no simulador Cisco Packet Tracer (versão 8.2.2.0400) para representar uma rede corporativa com topologia em camadas, VLANs, roteamento inter-VLAN, DHCP, NAT e ACLs. Inclui configurações manuais dos dispositivos e documentação detalhada.
+
+**Tecnologias:** Cisco Packet Tracer, VLAN, Roteamento, ACL, DHCP, NAT.
+
+**[➡️ Ver topologia, configurações e documentação](./network-lab-corporativo/README.md)**
 
