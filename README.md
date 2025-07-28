@@ -1,8 +1,10 @@
 # Portfólio de Projetos 
 
-Olá! Bem-vindo ao meu portfólio de projetos. Este repositório contém uma coleção de aplicações que desenvolvi para demonstrar minhas habilidades em programação e resolução de problemas.
+👋 Olá! Seja bem-vindo ao meu portfólio profissional. Aqui você encontrará uma seleção de projetos que desenvolvi nas áreas de infraestrutura de redes, análise de dados, desenvolvimento web e automação.
 
-Sinta-se à vontade para explorar cada projeto.
+Cada projeto reflete minha paixão por tecnologia, minha capacidade de resolver problemas reais e meu comprometimento com soluções práticas e bem estruturadas.
+
+Explore à vontade!
 
 ---
 
