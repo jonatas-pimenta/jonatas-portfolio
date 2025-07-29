@@ -26,13 +26,6 @@ Cada projeto foi pensado para resolver problemas reais, aplicar boas práticas d
 
 ---
 
-## 👨‍💻 Sobre mim
-
-Sou estudante de Redes de Computadores na FATEC Indaiatuba, apaixonado por tecnologia e em busca de oportunidades de estágio nas áreas de infraestrutura, automação e segurança da informação.
-
-📫 Contato: [LinkedIn](https://www.linkedin.com/in/jonatas-pimenta)
-
----
 
 > _“Tecnologia bem aplicada transforma realidades.”_
 
