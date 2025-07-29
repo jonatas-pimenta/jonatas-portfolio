@@ -1,4 +1,4 @@
-# 💼 Portfólio Profissional – Jonatas Pimenta
+# 💼 Portfólio – Jonatas Pimenta
 
 Olá! Seja bem-vindo ao meu portfólio de projetos. Aqui você encontrará uma seleção dos meus trabalhos nas áreas de infraestrutura de redes, automação, análise de dados, cibersegurança e desenvolvimento de software.
 
@@ -32,8 +32,6 @@ Sou estudante de Redes de Computadores na FATEC Indaiatuba, apaixonado por tecno
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
 
-
 ---
 
-> _“Tecnologia bem aplicada transforma realidades.”_
-
+> _"Tecnologia bem aplicada transforma realidades."_
