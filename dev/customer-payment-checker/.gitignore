@@ -1,0 +1,97 @@
+# ===================================
+# Customer Payment Checker .gitignore
+# ===================================
+
+# Arquivos de resultado/output
+planilha_fechamento.xlsx
+dados_clientes_exemplo.xlsx
+
+# Dados reais do usuário (proteção de privacidade)
+dados_clientes.xlsx
+
+# Ambientes virtuais Python
+.venv/
+venv/
+env/
+ENV/
+.ENV/
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Arquivos temporários
+/tmp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Logs e debug
+*.log
+*.out
+*.err
+debug.log
+
+# Arquivos do sistema operacional
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDEs e editores
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.metadata
+.settings/
+
+# Selenium específico
+chromedriver
+geckodriver
+*.har
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+*.orig
+
+# Arquivos sensíveis
+.env
+.env.local
+.env.production
+.env.test
+config.ini
+secrets.json
+
+# Documentação gerada
+docs/_build/
