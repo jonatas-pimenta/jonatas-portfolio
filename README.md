@@ -1,4 +1,4 @@
-# 💼 Portfólio Profissional – Jonatas Pimenta
+# 💼 Portfólio – Jonatas Pimenta
 
 Olá! Seja bem-vindo ao meu portfólio de projetos. Aqui você encontrará uma seleção dos meus trabalhos nas áreas de infraestrutura de redes, automação, análise de dados, cibersegurança e desenvolvimento de software.
 
