@@ -1,37 +1,39 @@
-# 💼 Portfólio – Jonatas Pimenta
+# 🎯 Portfolio Técnico - Jonatas Pimenta
 
-Olá! Seja bem-vindo ao meu portfólio de projetos. Aqui você encontrará uma seleção dos meus trabalhos nas áreas de infraestrutura de redes, automação, análise de dados, cibersegurança e desenvolvimento de software.
+Olá! Seja bem-vindo ao meu portfólio de projetos. Aqui você encontrará uma seleção dos meus trabalhos nas áreas de infraestrutura de TI, automação, análise de dados, cibersegurança e desenvolvimento de software.
 
-Cada projeto foi pensado para resolver problemas reais, aplicar boas práticas de tecnologia e demonstrar meu aprendizado prático.
+## 📁 Estrutura do Portfolio
 
----
+### 🚀 **Desenvolvimento**
+- [`customer-payment-checker`](./dev/customer-payment-checker) – Sistema automatizado de verificação de pagamentos com Python + Selenium
 
-## 📁 Estrutura por Áreas
+### 🏗️ **Infraestrutura**  
+- [`network-lab-corporativo`](./Infraestrutura/network-lab-corporativo) – Simulação de rede corporativa no Cisco Packet Tracer com VLANs, roteamento, ACLs e DHCP
 
-### 🔧 Dev (Desenvolvimento)
-- [`network-tool-gui`](./dev/network-tool-gui) – Aplicação em Python com interface gráfica para diagnóstico e escaneamento de rede.
-- [`customer-payment-checker`](./dev/customer-payment-checker) – Automação com Selenium para consulta de status de pagamento via CPF.
+### 🛡️ **Cibersegurança**
+- Projetos de segurança da informação e ethical hacking
 
-### 🚀 DevOps
-- [`laboratorio-ansible`](./devops/laboratorio-ansible) – Automação de instalação de pacotes e configurações em múltiplas VMs usando Ansible.
-
-### 🌐 Redes
-- [`network-lab-corporativo`](./redes/network-lab-corporativo) – Simulação de rede corporativa no Cisco Packet Tracer com VLANs, roteamento, ACLs e DHCP.
-
-### 🔐 Cibersegurança
-*(Em breve)* Projetos de análise de pacotes com Wireshark e automação de auditorias.
-
-### 📊 Análise de Dados
-*(Em breve)* Dashboards e análise de dados com Python, Power BI e Pandas.
+### ⚙️ **DevOps**
+- Projetos de automação, CI/CD e containerização
 
 ---
 
-## 👨‍💻 Sobre mim
+## 🎯 Projeto em Destaque
 
-Sou estudante de Redes de Computadores na FATEC Indaiatuba, apaixonado por tecnologia e em busca de oportunidades de estágio nas áreas de infraestrutura, automação e segurança da informação.
+### 🚀 **Customer Payment Checker**
+Sistema profissional de verificação automatizada de pagamentos de clientes
+- **Tecnologias**: Python 3.12, Selenium WebDriver, OpenPyXL
+- **Impacto**: 90% redução no tempo de processamento
+- **Features**: Interface CLI, processamento em lotes, recovery automático
+- **Ambiente**: Ubuntu 24.04.2 LTS + Chrome 138.0.7204.157
+
+**[→ Ver projeto completo](./dev/customer-payment-checker/)**
+
+---
+
+## 📞 Contato
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
+[![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)](https://github.com/jonatas-pimenta)
 
----
-
-> _"Tecnologia bem aplicada transforma realidades."_
+**Portfolio técnico para demonstração de competências em automação, infraestrutura e desenvolvimento**
