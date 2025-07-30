@@ -218,7 +218,7 @@ customer-payment-checker/
 
 **Desenvolvido por [Jonatas Pimenta](https://github.com/jonatas-pimenta)**
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://linkedin.com/in/jonatas-pimenta)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black?logo=github)](https://github.com/jonatas-pimenta)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Visit-orange?logo=web)](https://jonatas-pimenta.github.io)
 
