@@ -182,6 +182,10 @@ O site pode estar temporariamente indisponível
 
 ## 📞 Suporte
 
+**Desenvolvido por [Jonatas Pimenta](https://github.com/jonatas-pimenta)**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
+
 ### 🆘 **Precisa de Ajuda?**
 - 📧 **Email**: [seu-email@exemplo.com]
 - 💬 **GitHub Issues**: [Criar issue no repositório]

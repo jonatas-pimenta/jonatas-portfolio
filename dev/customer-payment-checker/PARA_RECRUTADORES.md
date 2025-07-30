@@ -198,8 +198,10 @@ Segue padrões da indústria em documentação, versionamento e estrutura de có
 
 <div align="center">
 
-**"Transformando problemas complexos em soluções elegantes através do código"**
+**Para mais projetos e contato profissional:**
 
-*Este projeto representa minha capacidade de entregar soluções completas, desde a concepção até a implementação, sempre com foco na qualidade e na experiência do usuário.*
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
+[![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)](https://github.com/jonatas-pimenta)
+[![Email](https://img.shields.io/badge/Email-Contato-red?logo=gmail)](mailto:jonatas.pimenta@email.com)
 
 </div>
