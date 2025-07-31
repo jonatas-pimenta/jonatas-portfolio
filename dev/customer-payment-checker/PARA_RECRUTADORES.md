@@ -10,21 +10,21 @@
 
 ## 🛠️ Stack Técnico Demonstrado
 
-### **Core Skills**
+### **Competências Principais**
 ```python
-• Python 3.12+ (POO, async, error handling)
-• Selenium WebDriver (browser automation)  
-• OpenPyXL (Excel data processing)
-• Shell Scripting (deployment automation)
-• Git Workflow (professional versioning)
+• Python 3.12+ (POO, async, tratamento de erros)
+• Selenium WebDriver (automação de navegador)  
+• OpenPyXL (processamento de dados Excel)
+• Shell Scripting (automação de implantação)
+• Git Workflow (versionamento profissional)
 ```
 
-### **Advanced Features**
-- **Rate Limiting**: Anti-block protection
-- **Recovery System**: Fault tolerance
-- **Batch Processing**: Memory optimization  
-- **CLI Interface**: User experience design
-- **Data Validation**: Input sanitization
+### **Funcionalidades Avançadas**
+- **Rate Limiting**: Proteção anti-bloqueio
+- **Sistema de Recuperação**: Tolerância a falhas
+- **Processamento em Lotes**: Otimização de memória  
+- **Interface CLI**: Design de experiência do usuário
+- **Validação de Dados**: Sanitização de entrada
 
 ---
 
@@ -71,37 +71,37 @@
 
 ---
 
-## 💡 Problem-Solving Approach
+## 💡 Abordagem de Resolução de Problemas
 
-### **Challenge 1**: Anti-Bot Detection
-**Solution**: Smart delays + human-like interaction patterns
+### **Desafio 1**: Detecção Anti-Bot
+**Solução**: Atrasos inteligentes + padrões de interação humana
 
-### **Challenge 2**: Large Dataset Processing  
-**Solution**: Batch processing + incremental saves
+### **Desafio 2**: Processamento de Grandes Volumes de Dados  
+**Solução**: Processamento em lotes + salvamentos incrementais
 
-### **Challenge 3**: User Experience
-**Solution**: CLI interface + progress visualization
+### **Desafio 3**: Experiência do Usuário
+**Solução**: Interface CLI + visualização de progresso
 
-### **Challenge 4**: Error Recovery
-**Solution**: State persistence + resume functionality
+### **Desafio 4**: Recuperação de Erros
+**Solução**: Persistência de estado + funcionalidade de retomada
 
 ---
 
-## 🎓 Learning & Growth Demonstrated
+## 🎓 Aprendizado & Crescimento Demonstrado
 
-### **Technical Skills Applied**
-1. **Web Scraping**: Selenium mastery
-2. **Data Processing**: Excel automation
-3. **System Design**: Scalable architecture
-4. **DevOps**: Deployment automation
-5. **UX Design**: Interface optimization
+### **Competências Técnicas Aplicadas**
+1. **Web Scraping**: Domínio do Selenium
+2. **Processamento de Dados**: Automação Excel
+3. **Design de Sistema**: Arquitetura escalável
+4. **DevOps**: Automação de implantação
+5. **Design UX**: Otimização de interface
 
-### **Soft Skills Evidenced**  
-1. **Problem Identification**: Spotted manual inefficiency
-2. **Solution Design**: End-to-end automation approach
-3. **User Empathy**: Designed for non-technical users
-4. **Documentation**: Professional-grade docs
-5. **Quality Assurance**: Extensive testing framework
+### **Habilidades Interpessoais Evidenciadas**  
+1. **Identificação de Problemas**: Detectou ineficiência manual
+2. **Design de Solução**: Abordagem de automação end-to-end
+3. **Empatia do Usuário**: Projetado para usuários não-técnicos
+4. **Documentação**: Documentação de nível profissional
+5. **Garantia de Qualidade**: Framework de teste extensivo
 
 ---
 
@@ -122,31 +122,31 @@
 
 ---
 
-## 💼 Portfolio Highlights
+## 💼 Destaques do Portfólio
 
-### **Why This Project Stands Out**
+### **Por que Este Projeto se Destaca**
 
-1. **Real Business Problem**: Not just a coding exercise
-2. **Measurable Impact**: Quantifiable ROI and efficiency gains  
-3. **Production Quality**: Error handling, user experience, documentation
-4. **Full Stack Thinking**: Frontend (CLI) + Backend (automation) + Data (Excel)
-5. **Scalable Design**: Built for growth, not just proof-of-concept
+1. **Problema de Negócio Real**: Não apenas um exercício de programação
+2. **Impacto Mensurável**: ROI quantificável e ganhos de eficiência  
+3. **Qualidade de Produção**: Tratamento de erros, experiência do usuário, documentação
+4. **Pensamento Full Stack**: Frontend (CLI) + Backend (automação) + Dados (Excel)
+5. **Design Escalável**: Construído para crescimento, não apenas prova de conceito
 
-### **Technologies in Modern Context**
-- **Python**: Industry standard for automation
-- **Selenium**: Leading web automation framework
-- **Excel Integration**: Universal business tool compatibility
-- **Linux Deployment**: Enterprise environment readiness
+### **Tecnologias em Contexto Moderno**
+- **Python**: Padrão da indústria para automação
+- **Selenium**: Framework líder de automação web
+- **Integração Excel**: Compatibilidade com ferramenta de negócio universal
+- **Implantação Linux**: Preparação para ambiente empresarial
 
 ---
 
 <div align="center">
 
-## 📞 Professional Contact
+## 📞 Contato Profissional
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
 [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)](https://github.com/jonatas-pimenta)
 
-**Ready to discuss how these skills can drive value in your organization**
+**Pronto para discutir como essas habilidades podem gerar valor na sua organização**
 
 </div>

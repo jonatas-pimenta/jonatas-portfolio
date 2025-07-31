@@ -1,81 +1,124 @@
-# Laboratório de Automação com Ansible
+# 🤖 Laboratório de Automação com Ansible
 
-Um projeto para demonstrar a automação da configuração de servidores Ubuntu usando Ansible e os princípios de Infraestrutura como Código (IaC). O laboratório consiste em um "Nó de Controle" que provisiona um ambiente web em um "Nó Gerenciado" de forma padronizada e replicável.
+<div align="center">
 
-## Funcionalidades
+![Ansible](https://img.shields.io/badge/Ansible-2.9+-red.svg)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-orange.svg)
+![IaC](https://img.shields.io/badge/IaC-Infrastructure_as_Code-blue.svg)
+![DevOps](https://img.shields.io/badge/DevOps-Automation-green.svg)
 
-- **Atualização de Pacotes:** Garante que o cache de pacotes `apt` esteja sempre atualizado antes de qualquer instalação.
-- **Instalação de Ferramentas:** Instala um conjunto de pacotes essenciais para administração e diagnóstico, incluindo `htop`, `net-tools`, `curl` e `tmux`.
-- **Provisionamento de Servidor Web:** Instala, habilita e inicia o servidor web Apache2, deixando-o pronto para servir aplicações.
-- **Idempotência:** O playbook pode ser executado várias vezes, garantindo sempre o mesmo estado final sem causar erros.
+**Automação de infraestrutura usando Ansible e princípios de IaC**
 
-## Arquitetura do Laboratório
+[🚀 Instalação](#-como-usar) • [🏗️ Arquitetura](#-arquitetura-do-laboratório) • [📸 Demo](#-demonstração) • [💼 Para Recrutadores](./PARA_RECRUTADORES.md)
 
-A infraestrutura foi montada no VirtualBox, simulando uma rede simples com um nó de controle e um nó gerenciado.
+</div>
+
+---
+
+## 📋 Sobre o Projeto
+
+Demonstração prática de automação de servidores Ubuntu usando Ansible e Infraestrutura como Código (IaC). O laboratório implementa um ambiente web padronizado e replicável através de um "Nó de Controle" que provisiona um "Nó Gerenciado".
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+![Ansible](https://img.shields.io/badge/Ansible-2.9+-red?logo=ansible)
+![YAML](https://img.shields.io/badge/YAML-Configuration-yellow)
+![Apache](https://img.shields.io/badge/Apache-2.4+-orange?logo=apache)
+![VirtualBox](https://img.shields.io/badge/VirtualBox-Lab_Environment-blue)
+
+---
+
+## 💼 Funcionalidades
+
+### ⚙️ **Automação de Infraestrutura**
+- **📦 Gerenciamento de Pacotes** - Atualização automática do cache apt
+- **🔧 Ferramentas Essenciais** - Instalação de htop, net-tools, curl, tmux
+- **🌐 Servidor Web** - Provisionamento completo do Apache2
+- **🔄 Idempotência** - Execuções múltiplas sem efeitos colaterais
+
+### 🛡️ **Boas Práticas**
+- **📝 IaC (Infrastructure as Code)** - Configuração versionada
+- **🎯 Automação Declarativa** - Estado desejado via YAML
+- **🔐 Acesso SSH** - Conectividade segura entre nós
+- **📊 Inventário Estruturado** - Gestão organizada de hosts
+
+---
+
+## 🏗️ Arquitetura do Laboratório
 
 <p align="center">
   <img src="diagrama-arquitetura.png" alt="Diagrama da Arquitetura do Laboratório Ansible" width="70%">
 </p>
 
-* **Nó de Controle (Servidor):** A máquina com IP `192.168.15.13`, responsável por armazenar o playbook e executar os comandos de automação.
-* **Nó Gerenciado (Cliente):** A máquina alvo com IP `192.168.15.5`, que é configurada remotamente via SSH.
+**Infraestrutura VirtualBox:**
+- **🖥️ Nó de Controle (192.168.15.13)** - Servidor Ansible com playbooks
+- **🎯 Nó Gerenciado (192.168.15.5)** - Cliente configurado remotamente via SSH
 
-## Requisitos do Ambiente
+---
 
-Para executar esta automação, seu ambiente precisa atender aos seguintes pré-requisitos:
+## 📋 Pré-requisitos
 
 ### Nó de Controle
-A máquina de onde você executará os comandos do Ansible.
-- **Sistema Operacional:** Linux ou macOS.
-  - *Para usuários de Windows, é necessário usar o WSL (Subsistema do Windows para Linux).*
-- **Software:** Ansible e Python (versão 3.8 ou superior).
+- **🐧 SO:** Linux ou macOS *(Windows: usar WSL)*
+- **⚙️ Software:** Ansible + Python 3.8+
 
-### Nós Gerenciados
-Os servidores que serão configurados pelo Ansible (neste projeto, um servidor Ubuntu).
-- **Conectividade:** Acesso via SSH a partir do Nó de Controle.
-- **Software:** Um interpretador Python (versão 2.7 ou 3.5+) para executar as tarefas do Ansible.
+### Nós Gerenciados  
+- **🔐 Conectividade:** Acesso SSH configurado
+- **🐍 Python:** Versão 2.7 ou 3.5+ para execução das tarefas
 
-## Como Usar
+---
 
-1.  **Clone o repositório (exemplo):**
-    ```bash
-    git clone https://github.com/seu-usuario/laboratorio-ansible.git
-    cd laboratorio-ansible
-    ```
+## 🚀 Como Usar
 
-2.  **Configure o Inventário:**
-    Ajuste o arquivo `inventario.ini` com o endereço IP e o usuário corretos para o seu nó gerenciado.
+1. **Clone o repositório:**
+   ```bash
+   git clone [seu-repo] && cd laboratorio-ansible
+   ```
 
-3.  **Teste a Conexão:**
-    Verifique se o Nó de Controle consegue se conectar ao Nó Gerenciado.
-    ```bash
-    ansible meus_clientes -m ping
-    ```
-    A saída esperada é uma resposta `SUCCESS` em verde.
+2. **Configure o inventário:**
+   ```bash
+   # Ajuste o arquivo inventario.ini com IPs corretos
+   nano inventario.ini
+   ```
 
-4.  **Execute o Playbook:**
-    Aplique a configuração no nó gerenciado.
-    ```bash
-    ansible-playbook instalar_programas.yml
-    ```
+3. **Teste a conexão:**
+   ```bash
+   ansible meus_clientes -m ping
+   ```
+   *Saída esperada: resposta `SUCCESS` em verde*
 
-## Estrutura do Projeto
+4. **Execute o playbook:**
+   ```bash
+   ansible-playbook instalar_programas.yml
+   ```
 
-- `instalar_programas.yml`: O Playbook do Ansible que descreve todas as tarefas a serem executadas no nó gerenciado.
-- `inventario.ini`: O arquivo de inventário que define os hosts e grupos de hosts que o Ansible irá gerenciar.
-- `README.md`: Este arquivo.
-- `diagrama-arquitetura.png`: Imagem do diagrama da arquitetura.
+---
 
-## Screenshot
+## 📁 Estrutura do Projeto
+
+```
+laboratorio-ansible/
+├── instalar_programas.yml    # Playbook principal
+├── inventario.ini           # Inventário de hosts
+├── diagrama-arquitetura.png # Arquitetura visual
+└── resultado-playbook.png   # Screenshot da execução
+```
+
+---
+
+## 📸 Demonstração
 
 <p align="center">
-  <img src="resultado-playbook.png" width="48%">
+  <img src="resultado-playbook.png" width="70%" alt="Resultado da Execução do Playbook">
 </p>
 
 
 ---
+
 <details>
-<summary><strong>Código do Playbook (`instalar_programas.yml`)</strong></summary>
+<summary><strong>💻 Código do Playbook (instalar_programas.yml)</strong></summary>
 
 ```yaml
 ---
@@ -102,3 +145,17 @@ Os servidores que serão configurados pelo Ansible (neste projeto, um servidor U
         name: apache2
         enabled: yes
         state: started
+```
+
+</details>
+
+---
+
+## 🔗 Conecte-se Comigo
+
+<div align="center">
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
+[![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)](https://github.com/jonatas-pimenta)
+
+</div>

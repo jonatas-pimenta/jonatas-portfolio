@@ -6,15 +6,16 @@ Olá! Seja bem-vindo ao meu portfólio de projetos. Aqui você encontrará uma s
 
 ### 🚀 **Desenvolvimento**
 - [`customer-payment-checker`](./dev/customer-payment-checker) – Sistema automatizado de verificação de pagamentos com Python + Selenium
+- [`network-tool-gui`](./dev/network-tool-gui) – Ferramenta de diagnóstico de rede com interface gráfica
 
 ### 🏗️ **Infraestrutura**  
-- [`network-lab-corporativo`](./Infraestrutura/network-lab-corporativo) – Simulação de rede corporativa no Cisco Packet Tracer com VLANs, roteamento, ACLs e DHCP
-
-### 🛡️ **Cibersegurança**
-- Projetos de segurança da informação e ethical hacking
+- [`network-lab-corporativo`](./Infraestrutura/network-lab-corporativo) – Rede corporativa completa com VLANs, ACLs e políticas de segurança
 
 ### ⚙️ **DevOps**
-- Projetos de automação, CI/CD e containerização
+- [`laboratorio-ansible`](./devops/laboratorio-ansible) – Automação de infraestrutura com Ansible e IaC
+
+### 🛡️ **Cibersegurança**
+- Projetos de segurança da informação e ethical hacking *(em desenvolvimento)*
 
 ---
 

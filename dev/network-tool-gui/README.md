@@ -1,63 +1,105 @@
-# Network Tool
+# 🌐 Network Tool GUI
 
-Uma ferramenta de rede com interface gráfica desenvolvida em Python e Tkinter. Projetada para ser uma solução completa e amigável para tarefas comuns de diagnóstico e segurança de rede.
+<div align="center">
 
-## Funcionalidades
+![Python](https://img.shields.io/badge/Python-3.6+-blue.svg)
+![Tkinter](https://img.shields.io/badge/Tkinter-GUI-green.svg)
+![Network](https://img.shields.io/badge/Network-Security-red.svg)
+![Platform](https://img.shields.io/badge/Platform-Cross--Platform-lightgrey.svg)
 
-- **Diagnóstico de Rede:**
-  - **Ping:** Verifica a conectividade e a latência com um host.
-  - **Traceroute:** Mapeia a rota que os pacotes levam até um host de destino.
-  - **NSLookup:** Realiza consultas DNS com saída limpa e filtrada, mostrando apenas as informações essenciais.
-  - **Salvar Resultados:** Permite exportar a saída completa do diagnóstico para um arquivo de texto, com data e hora da geração automaticamente adicionadas.
+**Ferramenta de rede com interface gráfica para diagnóstico e segurança**
 
-- **Scanner de Portas TCP:**
-  - Escaneia portas específicas ou intervalos de portas em um host (ex: `80, 443, 1000-2000`).
-  - Utiliza multithreading para um escaneamento rápido e eficiente.
-  - Realiza "Banner Grabbing" para tentar identificar o serviço rodando em portas abertas.
-  - **Barra de Progresso:** Fornece feedback visual em tempo real do andamento do escaneamento.
-  - **Salvar Resultados:** Permite exportar a lista de portas abertas, com sugestão de nome de arquivo e conteúdo contendo data e hora.
+[🚀 Instalação](#-instalação) • [💼 Funcionalidades](#-funcionalidades) • [📸 Screenshots](#-screenshots) • [💼 Para Recrutadores](./PARA_RECRUTADORES.md)
 
-- **Interface Gráfica e Experiência do Usuário:**
-  - Organizada em abas para uma navegação clara entre as funcionalidades.
-  - Executa tarefas de rede em threads separadas para garantir que a interface do usuário não congele durante as operações.
-  - **Validação de Entrada:** Verifica se os dados inseridos (host, portas) são válidos antes de iniciar as tarefas.
-  - **Feedback de Erro:** Exibe mensagens de erro claras e informativas usando pop-ups.
-  - **Estilo Moderno:** Utiliza temas do `ttk` para uma aparência mais agradável e profissional.
+</div>
 
-## Screenshot
+---
+
+## 📋 Sobre o Projeto
+
+Ferramenta completa para diagnóstico de rede e scanner de portas com interface gráfica moderna desenvolvida em Python e Tkinter. Oferece uma solução amigável para tarefas comuns de administração e segurança de rede.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+![Python](https://img.shields.io/badge/Python-3.6+-blue?logo=python)
+![Tkinter](https://img.shields.io/badge/Tkinter-Standard_GUI-green)
+![Threading](https://img.shields.io/badge/Threading-Multithreading-orange)
+
+---
+
+## 💼 Funcionalidades
+
+### 🔍 **Diagnóstico de Rede**
+- **🏓 Ping** - Verifica conectividade e latência
+- **🗺️ Traceroute** - Mapeia rota dos pacotes  
+- **🌐 NSLookup** - Consultas DNS filtradas
+- **💾 Exportação** - Salva resultados com timestamp
+
+### 🔒 **Scanner de Portas TCP**
+- **🎯 Escaneamento Flexível** - Portas específicas ou intervalos
+- **⚡ Multithreading** - Processamento rápido e eficiente
+- **🏷️ Banner Grabbing** - Identificação de serviços
+- **📊 Barra de Progresso** - Feedback visual em tempo real
+- **📁 Relatórios** - Exportação de resultados detalhados
+
+### 🎨 **Interface e UX**
+- **📑 Navegação por Abas** - Organização clara
+- **🔄 Threading Separado** - Interface responsiva
+- **✅ Validação Inteligente** - Verificação de entradas
+- **🚨 Feedback de Erro** - Mensagens informativas
+- **🎨 Design Moderno** - Temas profissionais do ttk
+
+---
+
+## 📸 Screenshots
 
 <p align="center">
-  <img src="screenshot_diagnostico.png" width="48%">
+  <img src="screenshot_diagnostico.png" width="48%" alt="Diagnóstico de Rede">
   &nbsp;
-  <img src="screenshot_scanner.png" width="48%">
+  <img src="screenshot_scanner.png" width="48%" alt="Scanner de Portas">
 </p>
 
-## Requisitos
+---
 
+## 🚀 Instalação
+
+### 📋 Pré-requisitos
 - Python 3.6 ou superior
-- Tkinter (geralmente já vem instalado com o Python em sistemas Linux e Windows)
+- Tkinter (incluído no Python padrão)
 
-## Instalação e Uso
+### ⚡ Como Usar
 
-Siga os passos abaixo para executar a aplicação:
+1. **Clone o repositório:**
+   ```bash
+   git clone [seu-repo] && cd network-tool-gui
+   ```
 
-1.  **Clone o repositório (após subi-lo para o GitHub):**
-    ```bash
-    git clone https://github.com/seu-usuario/network-tool.git
-    ```
+2. **Execute a aplicação:**
+   ```bash
+   python app.py
+   ```
 
-2.  **Navegue até o diretório do projeto:**
-    ```bash
-    cd network-tool
-    ```
+---
 
-3.  **Execute a aplicação:**
-    ```bash
-    python app.py
-    ```
+## 📁 Estrutura do Projeto
 
-## Estrutura do Projeto
+```
+network-tool-gui/
+├── app.py          # Interface gráfica principal (Tkinter)
+├── backend.py      # Comandos de diagnóstico (subprocess)
+├── scanner.py      # Scanner de portas TCP + Banner Grabbing
+└── screenshots/    # Capturas de tela da aplicação
+```
 
-- `app.py`: O ponto de entrada da aplicação. Contém todo o código da interface gráfica (Tkinter) e a lógica para orquestrar as tarefas.
-- `backend.py`: Módulo responsável por executar os comandos de diagnóstico (`ping`, `traceroute`, `nslookup`) usando o `subprocess`.
-- `scanner.py`: Módulo que contém toda a lógica para o escaneamento de portas TCP, incluindo a análise de portas e o banner grabbing.
+---
+
+## 🔗 Conecte-se Comigo
+
+<div align="center">
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
+[![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)](https://github.com/jonatas-pimenta)
+
+</div>
