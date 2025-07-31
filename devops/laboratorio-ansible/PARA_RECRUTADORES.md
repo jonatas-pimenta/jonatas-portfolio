@@ -170,11 +170,9 @@
 
 <div align="center">
 
-## 📞 Contato Profissional
+## 📞 Contato
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
 [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)](https://github.com/jonatas-pimenta)
-
-**Pronto para discutir como essas habilidades de automação podem transformar suas operações de infraestrutura**
 
 </div>

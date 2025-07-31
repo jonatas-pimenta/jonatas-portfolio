@@ -36,5 +36,3 @@ Sistema profissional de verificação automatizada de pagamentos de clientes
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
 [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)](https://github.com/jonatas-pimenta)
-
-**Portfolio técnico para demonstração de competências em automação, infraestrutura e desenvolvimento**

@@ -173,11 +173,9 @@ access-list 1 deny 192.168.30.0 0.0.0.255    ! Produção blocked
 
 <div align="center">
 
-## 📞 Contato Profissional
+## 📞 Contato
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
 [![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)](https://github.com/jonatas-pimenta)
-
-**Pronto para discutir como essas habilidades de engenharia de rede podem proteger e otimizar sua infraestrutura**
 
 </div>
