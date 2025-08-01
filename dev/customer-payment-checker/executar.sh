@@ -21,7 +21,12 @@ if [ ! -f "dados_clientes.xlsx" ]; then
     if [ "$opcao" = "1" ]; then
         echo ""
         echo "📝 Criando planilha de exemplo..."
-        /home/lion/Documentos/Projetos/jonatas-portfolio/dev/customer-payment-checker/.venv/bin/python criar_planilha_exemplo.py
+        .venv/bin/python -c "
+import sys
+sys.path.append('.')
+from verificador_pagamentos import criar_planilha_exemplo
+criar_planilha_exemplo()
+"
         mv dados_clientes_exemplo.xlsx dados_clientes.xlsx
         echo "✅ Planilha de exemplo criada como 'dados_clientes.xlsx'"
         echo ""
@@ -33,8 +38,8 @@ if [ ! -f "dados_clientes.xlsx" ]; then
 fi
 
 echo "🎛️  MODO DE EXECUÇÃO:"
-echo "1. 🧪 TESTE RÁPIDO - Apenas 3 clientes (recomendado para primeira vez)"
-echo "2. 🎯 EXECUÇÃO COMPLETA - Você escolhe quantos clientes processar"
+echo "1. 📊 ESCOLHER QUANTIDADE - Defina quantos clientes processar (recomendado para teste)"
+echo "2. 🎯 PROCESSAR TODOS - Todos os clientes da planilha"
 echo "3. ❌ Cancelar"
 echo ""
 read -p "Escolha uma opção (1-3): " modo
@@ -42,30 +47,42 @@ read -p "Escolha uma opção (1-3): " modo
 case $modo in
     1)
         echo ""
-        echo "🧪 TESTE RÁPIDO INICIADO"
-        echo "========================"
-        echo "✅ Processará apenas os primeiros 3 clientes"
-        echo "⚠️  IMPORTANTE: Não feche o navegador manualmente!"
+        echo "📊 PROCESSAMENTO PERSONALIZADO"
+        echo "=============================="
+        echo "💡 Para teste rápido, recomendamos 3-5 clientes"
         echo ""
-        read -p "Pressione Enter para continuar..."
+        read -p "Quantos clientes você quer processar? " quantidade
         
-        # Executar com opções predefinidas para teste
-        echo "2" > /tmp/opcoes_teste.txt
-        echo "3" >> /tmp/opcoes_teste.txt
-        /home/lion/Documentos/Projetos/jonatas-portfolio/dev/customer-payment-checker/.venv/bin/python verificador_pagamentos.py < /tmp/opcoes_teste.txt
-        rm -f /tmp/opcoes_teste.txt
+        if [[ "$quantidade" =~ ^[0-9]+$ ]] && [ "$quantidade" -gt 0 ]; then
+            echo ""
+            echo "✅ Processará os primeiros $quantidade clientes"
+            echo "⚠️  IMPORTANTE: Não feche o navegador manualmente!"
+            echo ""
+            read -p "Pressione Enter para continuar..."
+            
+            # Executar com quantidade específica
+            echo "2" > /tmp/opcoes_processamento.txt
+            echo "$quantidade" >> /tmp/opcoes_processamento.txt
+            .venv/bin/python verificador_pagamentos.py < /tmp/opcoes_processamento.txt
+            rm -f /tmp/opcoes_processamento.txt
+        else
+            echo "❌ Quantidade inválida. Digite apenas números maiores que 0."
+            exit 1
+        fi
         ;;
     2)
         echo ""
-        echo "🎯 EXECUÇÃO COMPLETA"
-        echo "===================="
-        echo "✅ Você poderá escolher quantos clientes processar"
+        echo "🎯 PROCESSAMENTO COMPLETO"
+        echo "========================="
+        echo "✅ Processará TODOS os clientes da planilha"
         echo "⚠️  IMPORTANTE: Não feche o navegador manualmente!"
         echo ""
         read -p "Pressione Enter para continuar..."
         
-        # Executar normalmente
-        /home/lion/Documentos/Projetos/jonatas-portfolio/dev/customer-payment-checker/.venv/bin/python verificador_pagamentos.py
+        # Executar processando todos
+        echo "1" > /tmp/opcoes_processamento.txt
+        .venv/bin/python verificador_pagamentos.py < /tmp/opcoes_processamento.txt
+        rm -f /tmp/opcoes_processamento.txt
         ;;
     3)
         echo "❌ Processo cancelado pelo usuário."

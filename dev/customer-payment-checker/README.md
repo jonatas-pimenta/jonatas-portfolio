@@ -41,6 +41,25 @@ chmod +x setup.sh && ./setup.sh
 
 ---
 
+## 🎬 Demonstração em Vídeo
+
+<div align="center">
+
+[![🎥 Assistir Demonstração](https://img.shields.io/badge/🎥_Assistir-Demonstração_Completa-red?style=for-the-badge&logo=youtube)](https://drive.google.com/file/d/1QxIY7Ozb4DPTw0iVlhzbp3lg-bFSkKBC/view?usp=drive_link)
+
+*Demonstração completa: Interface, automação Selenium, processamento de dados e geração de relatórios*
+
+</div>
+
+**🎯 O que você verá no vídeo:**
+- ⚡ Interface amigável do sistema
+- 🔧 Configuração automática do ambiente
+- 🤖 Automação web com Selenium
+- 📊 Processamento de dados em tempo real
+- 📈 Geração de relatórios Excel
+
+---
+
 ## 💼 Funcionalidades
 
 ### 🎛️ **Controles de Processamento**

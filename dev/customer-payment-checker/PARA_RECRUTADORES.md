@@ -1,6 +1,18 @@
 # 💼 Customer Payment Checker - Análise Técnica
 
-## 🎯 Visão Executiva
+## � Demonstração Técnica
+
+<div align="center">
+
+[![🎥 Ver Demo Técnica](https://img.shields.io/badge/🎥_Demo-Técnica_Completa-blue?style=for-the-badge&logo=play)](https://drive.google.com/file/d/1QxIY7Ozb4DPTw0iVlhzbp3lg-bFSkKBC/view?usp=drive_link)
+
+*Demonstração completa: Interface, automação Selenium, processamento de dados e geração de relatórios*
+
+</div>
+
+---
+
+## �🎯 Visão Executiva
 
 **Problema:** Verificação manual de pagamentos consome 8h/dia de trabalho  
 **Solução:** Automação via web scraping reduz para 45min/dia  
@@ -55,7 +67,19 @@
 
 ---
 
-## 🎯 Business Value Delivered
+## � Demonstração Técnica
+
+<div align="center">
+
+[![🎥 Ver Demo Técnica](https://img.shields.io/badge/🎥_Demo-Técnica_Completa-blue?style=for-the-badge&logo=play)](https://drive.google.com/file/d/1QxIY7Ozb4DPTw0iVlhzbp3lg-bFSkKBC/view?usp=drive_link)
+
+*Demonstração completa: Interface, automação Selenium, processamento de dados e geração de relatórios*
+
+</div>
+
+---
+
+## 🎯 Problema de Negócio Resolvido
 
 ### **Operational Excellence**
 - **Time Savings**: 7h15min/day freed for strategic tasks
