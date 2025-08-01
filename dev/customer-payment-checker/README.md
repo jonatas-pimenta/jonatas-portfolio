@@ -17,7 +17,7 @@
 
 ## 📋 Sobre o Projeto
 
-Automatiza a verificação de status de pagamentos de clientes através de web scraping, eliminando trabalho manual e reduzindo em **90% o tempo de processamento**.
+Automatiza a verificação de status de pagamentos de clientes através de web scraping, eliminando trabalho manual e reduzindo significativamente o tempo de processamento.
 
 ### ⚡ Quick Start
 ```bash
@@ -45,7 +45,7 @@ chmod +x setup.sh && ./setup.sh
 
 <div align="center">
 
-[![🎥 Assistir Demonstração](https://img.shields.io/badge/🎥_Assistir-Demonstração_Completa-red?style=for-the-badge&logo=youtube)](https://drive.google.com/file/d/1QxIY7Ozb4DPTw0iVlhzbp3lg-bFSkKBC/view?usp=drive_link)
+[![Clique aqui para ver o vídeo](https://img.shields.io/badge/Clique_aqui-Para_ver_o_vídeo-red?style=for-the-badge&logo=youtube)](https://drive.google.com/file/d/1QxIY7Ozb4DPTw0iVlhzbp3lg-bFSkKBC/view?usp=drive_link)
 
 *Demonstração completa: Interface, automação Selenium, processamento de dados e geração de relatórios*
 
@@ -116,12 +116,12 @@ Escolha: 3 | Lote: 10
 - **UX Design**: Interface CLI intuitiva
 - **Problem Solving**: Automação de processos manuais
 
-### 📊 **Impacto Mensurável**
-- ⚡ **90% redução** no tempo de verificação
-- 🚀 **1000+ clientes/hora** de capacidade
-- 💰 **ROI 500%** em 3 meses
-- 🛡️ **Zero erros** humanos
-- 📈 **99.5% precisão** na coleta
+### 📊 **Impacto Demonstrado**
+- ⚡ **Redução significativa** no tempo de verificação
+- 🚀 **Capacidade de processar** grandes volumes
+- 💰 **Excelente retorno** sobre investimento
+- 🛡️ **Eliminação de erros** humanos
+- 📈 **Alta precisão** na coleta de dados
 
 ### 🏆 **Diferenciais**
 - **Production Ready**: Tratamento robusto de erros

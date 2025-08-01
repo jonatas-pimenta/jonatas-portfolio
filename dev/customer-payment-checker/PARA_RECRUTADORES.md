@@ -1,10 +1,10 @@
 # 💼 Customer Payment Checker - Análise Técnica
 
-## � Demonstração Técnica
+## 🎬 Demonstração Técnica
 
 <div align="center">
 
-[![🎥 Ver Demo Técnica](https://img.shields.io/badge/🎥_Demo-Técnica_Completa-blue?style=for-the-badge&logo=play)](https://drive.google.com/file/d/1QxIY7Ozb4DPTw0iVlhzbp3lg-bFSkKBC/view?usp=drive_link)
+[![Clique aqui para ver o vídeo](https://img.shields.io/badge/Clique_aqui-Para_ver_o_vídeo-blue?style=for-the-badge&logo=play)](https://drive.google.com/file/d/1QxIY7Ozb4DPTw0iVlhzbp3lg-bFSkKBC/view?usp=drive_link)
 
 *Demonstração completa: Interface, automação Selenium, processamento de dados e geração de relatórios*
 
@@ -12,11 +12,11 @@
 
 ---
 
-## �🎯 Visão Executiva
+## 🎯 Visão Executiva
 
-**Problema:** Verificação manual de pagamentos consome 8h/dia de trabalho  
-**Solução:** Automação via web scraping reduz para 45min/dia  
-**Resultado:** 90% redução de tempo + eliminação de erros humanos
+**Problema:** Verificação manual de pagamentos consome tempo significativo de trabalho  
+**Solução:** Automação via web scraping para reduzir drasticamente o tempo necessário  
+**Resultado:** Redução substancial de tempo e eliminação de erros humanos
 
 ---
 
@@ -42,12 +42,12 @@
 
 ## 📊 Métricas de Impacto
 
-| Métrica | Antes | Depois | Improvement |
-|---------|-------|--------|-------------|
-| **Tempo/Cliente** | 2 min | 12 seg | **90% ↓** |
-| **Erros Humanos** | 5-10% | 0% | **100% ↓** |
-| **Capacidade/Hora** | 30 | 300+ | **1000% ↑** |
-| **ROI (3 meses)** | - | 500% | **Pure Gain** |
+| Métrica | Antes | Depois | Melhoria |
+|---------|-------|--------|----------|
+| **Tempo/Cliente** | Manual | Automatizado | Significativa |
+| **Erros Humanos** | Possíveis | Eliminados | Total |
+| **Capacidade/Hora** | Limitada | Expandida | Substancial |
+| **ROI** | - | Positivo | Demonstrável |
 
 ---
 
@@ -67,31 +67,19 @@
 
 ---
 
-## � Demonstração Técnica
-
-<div align="center">
-
-[![🎥 Ver Demo Técnica](https://img.shields.io/badge/🎥_Demo-Técnica_Completa-blue?style=for-the-badge&logo=play)](https://drive.google.com/file/d/1QxIY7Ozb4DPTw0iVlhzbp3lg-bFSkKBC/view?usp=drive_link)
-
-*Demonstração completa: Interface, automação Selenium, processamento de dados e geração de relatórios*
-
-</div>
-
----
-
 ## 🎯 Problema de Negócio Resolvido
 
 ### **Operational Excellence**
-- **Time Savings**: 7h15min/day freed for strategic tasks
-- **Accuracy**: 100% elimination of manual errors
-- **Scalability**: Process 1000+ clients without additional staff
-- **Compliance**: Consistent data collection methodology
+- **Time Savings**: Tempo liberado para tarefas estratégicas
+- **Accuracy**: Eliminação de erros manuais
+- **Scalability**: Processar grandes volumes sem equipe adicional
+- **Compliance**: Metodologia consistente de coleta de dados
 
 ### **Technical Innovation**
-- **Process Automation**: Manual → Automated workflow
-- **Data Integration**: Excel → Web → Excel pipeline  
-- **User Experience**: Complex tech → Simple interface
-- **Fault Tolerance**: Robust error recovery system
+- **Process Automation**: Workflow Manual → Automatizado
+- **Data Integration**: Pipeline Excel → Web → Excel  
+- **User Experience**: Tecnologia complexa → Interface simples
+- **Fault Tolerance**: Sistema robusto de recuperação de erros
 
 ---
 
@@ -151,7 +139,7 @@
 ### **Por que Este Projeto se Destaca**
 
 1. **Problema de Negócio Real**: Não apenas um exercício de programação
-2. **Impacto Mensurável**: ROI quantificável e ganhos de eficiência  
+2. **Impacto Demonstrável**: ROI quantificável e ganhos de eficiência  
 3. **Qualidade de Produção**: Tratamento de erros, experiência do usuário, documentação
 4. **Pensamento Full Stack**: Frontend (CLI) + Backend (automação) + Dados (Excel)
 5. **Design Escalável**: Construído para crescimento, não apenas prova de conceito
