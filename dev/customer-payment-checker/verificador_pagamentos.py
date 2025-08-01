@@ -36,39 +36,6 @@ def configurar_driver():
         driver = webdriver.Chrome(service=service, options=chrome_options)
         return driver
 
-def criar_planilha_exemplo():
-    """Cria planilha de exemplo com dados fictícios para teste"""
-    print("🏗️  Criando planilha de exemplo...")
-    
-    # Criar nova planilha
-    workbook = openpyxl.Workbook()
-    sheet = workbook.active
-    sheet.title = 'Sheet1'
-    
-    # Cabeçalho
-    sheet.append(["Nome", "Valor", "CPF", "Vencimento"])
-    
-    # Dados de exemplo (CPFs fictícios para teste)
-    dados_exemplo = [
-        ["João Silva", 1500.00, "12345678901", "2024-01-15"],
-        ["Maria Santos", 2300.50, "98765432100", "2024-01-20"],
-        ["Carlos Oliveira", 850.75, "11122233344", "2024-01-25"],
-        ["Ana Costa", 1200.00, "55566677788", "2024-02-01"],
-        ["Pedro Souza", 950.25, "99988877766", "2024-02-05"]
-    ]
-    
-    # Adicionar dados
-    for linha in dados_exemplo:
-        sheet.append(linha)
-    
-    # Salvar
-    caminho = "dados_clientes_exemplo.xlsx"
-    workbook.save(caminho)
-    
-    print(f"✅ Planilha criada: {caminho}")
-    print(f"📊 {len(dados_exemplo)} clientes de exemplo")
-    return caminho
-
 def verificar_planilha_clientes(caminho_planilha):
     """Verifica se a planilha de clientes existe"""
     if not os.path.exists(caminho_planilha):
