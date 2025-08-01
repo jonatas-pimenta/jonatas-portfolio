@@ -17,7 +17,7 @@
 
 ## 📋 Sobre o Projeto
 
-Demonstração prática de automação de servidores Ubuntu usando Ansible e Infraestrutura como Código (IaC). O laboratório implementa um ambiente web padronizado e replicável através de um "Nó de Controle" que provisiona um "Nó Gerenciado".
+Demonstração prática de automação de servidores Ubuntu usando Ansible e Infraestrutura como Código (IaC). O laboratório implementa um ambiente web padronizado e reproduzível através de um "Nó de Controle" que provisiona um "Nó Gerenciado".
 
 ---
 
@@ -33,16 +33,16 @@ Demonstração prática de automação de servidores Ubuntu usando Ansible e Inf
 ## 💼 Funcionalidades
 
 ### ⚙️ **Automação de Infraestrutura**
-- **📦 Gerenciamento de Pacotes** - Atualização automática do cache apt
-- **🔧 Ferramentas Essenciais** - Instalação de htop, net-tools, curl, tmux
-- **🌐 Servidor Web** - Provisionamento completo do Apache2
-- **🔄 Idempotência** - Execuções múltiplas sem efeitos colaterais
+- **Gerenciamento de Pacotes** - Atualização automática do cache apt
+- **Ferramentas Essenciais** - Instalação de htop, net-tools, curl, tmux
+- **Servidor Web** - Provisionamento completo do Apache2
+- **Idempotência** - Execuções múltiplas sem efeitos colaterais
 
 ### 🛡️ **Boas Práticas**
-- **📝 IaC (Infrastructure as Code)** - Configuração versionada
-- **🎯 Automação Declarativa** - Estado desejado via YAML
-- **🔐 Acesso SSH** - Conectividade segura entre nós
-- **📊 Inventário Estruturado** - Gestão organizada de hosts
+- **IaC (Infrastructure as Code)** - Configuração versionada
+- **Automação Declarativa** - Estado desejado via YAML
+- **Acesso SSH** - Conectividade segura entre nós
+- **Inventário Estruturado** - Gestão organizada de hosts
 
 ---
 
@@ -53,20 +53,20 @@ Demonstração prática de automação de servidores Ubuntu usando Ansible e Inf
 </p>
 
 **Infraestrutura VirtualBox:**
-- **🖥️ Nó de Controle (192.168.15.13)** - Servidor Ansible com playbooks
-- **🎯 Nó Gerenciado (192.168.15.5)** - Cliente configurado remotamente via SSH
+- **Nó de Controle (192.168.15.13)** - Servidor Ansible com playbooks
+- **Nó Gerenciado (192.168.15.5)** - Cliente configurado remotamente via SSH
 
 ---
 
 ## 📋 Pré-requisitos
 
 ### Nó de Controle
-- **🐧 SO:** Linux ou macOS *(Windows: usar WSL)*
-- **⚙️ Software:** Ansible + Python 3.8+
+- **SO:** Linux ou macOS *(Windows: usar WSL)*
+- **Software:** Ansible + Python 3.8+
 
 ### Nós Gerenciados  
-- **🔐 Conectividade:** Acesso SSH configurado
-- **🐍 Python:** Versão 2.7 ou 3.5+ para execução das tarefas
+- **Conectividade:** Acesso SSH configurado
+- **Python:** Versão 2.7 ou 3.5+ para execução das tarefas
 
 ---
 
@@ -113,7 +113,6 @@ laboratorio-ansible/
 <p align="center">
   <img src="resultado-playbook.png" width="70%" alt="Resultado da Execução do Playbook">
 </p>
-
 
 ---
 
