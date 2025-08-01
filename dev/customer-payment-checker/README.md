@@ -2,10 +2,10 @@
 
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.12+-blue?logo=python)
-![Selenium](https://img.shields.io/badge/Selenium-4.15+-green?logo=selenium)
-![OpenPyXL](https://img.shields.io/badge/OpenPyXL-3.1.2-orange)
-![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat&logo=selenium&logoColor=white)
+![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=flat&logo=gnu-bash&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
 
 **Sistema automatizado para verificação de status de pagamentos via web scraping**
 

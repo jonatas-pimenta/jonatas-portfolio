@@ -2,10 +2,18 @@
 
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.12+-blue.svg)
-![Selenium](https://img.shields.io/badge/Selenium-4.15+-green.svg)
-![Portfolio](https://img.shields.io/badge/Portfolio-Project-orange.svg)
-![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat&logo=selenium&logoColor=white)
+![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=flat&logo=gnu-bash&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
+
+**Sistema automatizado para verificação de status de pagamentos via web scraping**
+
+[🚀 Instalação](#-instalação) • [💼 Funcionalidades](#-funcionalidades) • [🎯 Demo](#-demonstração) • [💼 Para Recrutadores](#-valor-para-recrutadores)
+
+</div>
+
+---
 
 **Sistema automatizado para verificação de status de pagamentos via web scraping**
 
