@@ -15,24 +15,24 @@ Olá! Seja bem-vindo ao meu portfólio de projetos. Aqui você encontrará uma s
 - [`laboratorio-ansible`](./devops/laboratorio-ansible) – Automação de infraestrutura com Ansible e IaC
 
 ### 🛡️ **Cibersegurança**
-- Projetos de segurança da informação e ethical hacking *(em desenvolvimento)*
+- Projetos de segurança da informação e ethical hacking *(em desenvolvimento)*  
 
----
 
 ## 🎯 Projeto em Destaque
 
-### 🚀 **Customer Payment Checker**
+#### 🚀 Customer Payment Checker
 Sistema profissional de verificação automatizada de pagamentos de clientes
 - **Tecnologias**: Python 3.12, Selenium WebDriver, OpenPyXL
-- **Impacto**: 90% redução no tempo de processamento
+- **Objetivo**: Automatizar a verificação de status de pagamento, substituindo um processo manual e repetitivo para otimizar o tempo e reduzir erros.
 - **Features**: Interface CLI, processamento em lotes, recovery automático
-- **Ambiente**: Ubuntu 24.04.2 LTS + Chrome 138.0.7204.157
+- **Ambiente**: Ubuntu 24.04.2 LTS + Chrome
 
 **[→ Ver projeto completo](./dev/customer-payment-checker/)**
-
 ---
+<div align="center">
 
-## 📞 Contato
+**Desenvolvido por [Jonatas Pimenta](https://github.com/jonatas-pimenta)**  
+Estudante de Redes de Computadores | Buscando oportunidades de estágio em Tecnologia  
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
-[![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)](https://github.com/jonatas-pimenta)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
+[![GitHub](https://img.shields.io/badge/GitHub-Ver_Mais_Projetos-black?logo=github&style=for-the-badge)](https://github.com/jonatas-pimenta)

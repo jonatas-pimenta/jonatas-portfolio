@@ -15,28 +15,12 @@
 
 ---
 
-## 📋 Sobre o Projeto
 
-Automatiza a verificação de status de pagamentos de clientes através de web scraping, eliminando trabalho manual repetitivo. O sistema processa planilhas Excel e consulta dados em site externo com múltiplas opções de processamento.
+## 📋 Descrição do Projeto
 
-### Principais Recursos
-- **Automação Web** com Selenium WebDriver
-- **Processamento de Planilhas** Excel com OpenPyXL
-- **Interface CLI** amigável com múltiplas opções
-- **Sistema de Recuperação** para execuções interrompidas
+O Verificador de Pagamentos de Clientes é uma ferramenta automatizada desenvolvida em Python que utiliza a biblioteca Selenium para interagir com uma aplicação web externa e verificar o status de pagamento de clientes com base em seus CPFs. O projeto lê dados de uma planilha Excel (dados_clientes.xlsx), processa cada cliente individualmente, consulta o status de pagamento em um site específico ( https://consultcpf-devaprender.netlify.app ) e gera uma planilha de fechamento (planilha_fechamento.xlsx) com os resultados.
 
----
-
-## 🛠️ Tecnologias Utilizadas
-
-| Tech | Versão | Uso |
-|------|--------|-----|
-| ![Python](https://img.shields.io/badge/Python-3.12.3-blue?logo=python) | 3.12.3 | Core + POO |
-| ![Selenium](https://img.shields.io/badge/Selenium-4.15.2-green?logo=selenium) | 4.15.2 | Web Scraping |
-| ![OpenPyXL](https://img.shields.io/badge/OpenPyXL-3.1.2-orange) | 3.1.2 | Excel Processing |
-
-**Ambiente de Desenvolvimento:**
-- Python 3.12+ | Chrome 138+ | Ubuntu 24.04.2 LTS *(testado)*
+Este sistema é ideal para pequenas empresas ou profissionais autônomos que precisam automatizar a verificação de pagamentos, economizando tempo e minimizando erros manuais. Ele oferece flexibilidade no processamento, permitindo verificar todos os clientes ou um número específico.
 
 ---
 
@@ -58,13 +42,35 @@ Automatiza a verificação de status de pagamentos de clientes através de web s
 - Geração de relatórios Excel
 
 ---
+### 🚀 Habilidades Técnicas Aplicadas
+
+**Automação e Web Scraping**
+- Web scraping com Selenium WebDriver
+- Automação de formulários web
+- Controle de tempo e tratamento de falhas
+
+**Manipulação de Dados**
+- Leitura e escrita de planilhas Excel com OpenPyXL
+- Validação e formatação de dados
+- Geração de relatórios automatizados
+
+**Programação**
+- Programação Orientada a Objetos com Python
+- Interface CLI com menus interativos
+- Tratamento robusto de exceções
+
+**DevOps / Ambiente**
+- Execução automatizada via Shell Script
+- Configuração de ambiente virtual Python (.venv)
+- Testado em Ubuntu Server com Google Chrome
+
 
 ## 💼 Funcionalidades
 
 ### Controles de Processamento
-- **Processamento Total** - Todos os clientes
+- **Processamento Total** - Todos os clientes da planilha
 - **Processamento Limitado** - Primeiros N clientes  
-- **Processamento em Lotes** - Grupos com pausas
+- **Processamento em Lotes** - Grupos com pausas configuráveis
 - **Intervalo Específico** - Do cliente X ao Y
 - **Continuação** - Retomar execuções interrompidas
 
@@ -74,23 +80,9 @@ Automatiza a verificação de status de pagamentos de clientes através de web s
 - **Validação de Dados** - Verificação de CPF e formato
 - **Interface Progressiva** - Feedback visual em tempo real
 - **Logs Detalhados** - Rastreamento completo de operações
+- **Formatação Automática** - CPF e valores monetários
 
----
-
-## 🎯 Demonstração
-
-```bash
-$ ./executar.sh
-
-📋 Prévia: 50 clientes carregados
-🔧 Opções: [1] Todos [2] Primeiros N [3] Lotes [4] Intervalo [5] Continuar
-Escolha: 3 | Lote: 10
-
-📦 Processando lote 1/5
-  ✓ João Silva - Em dia (15/01/2024 via Cartão)
-  ⚠ Maria Santos - Pendente
-✅ Lote concluído!
-```
+-
 
 **Resultado:** Planilha Excel com status, datas e métodos de pagamento.
 
@@ -101,7 +93,6 @@ Escolha: 3 | Lote: 10
 - **Python 3.8+** (testado em 3.12.3)
 - **Google Chrome** versão 138+ instalado
 - **Sistema Operacional:** Ubuntu 24.04.2 LTS *(recomendado)*
-- **Memória:** 4GB RAM mínimo para processamento fluido
 - **Conectividade:** Internet estável para consultas web
 
 ---
@@ -110,7 +101,8 @@ Escolha: 3 | Lote: 10
 
 ### Instalação Automática (Recomendada)
 ```bash
-git clone [seu-repo] && cd customer-payment-checker
+git clone https://github.com/jonatas-pimenta/jonatas-portfolio.git
+cd dev/customer-payment-checker
 chmod +x executar.sh
 ./executar.sh
 ```
@@ -122,7 +114,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 # 2. Instalar dependências
-pip install -r requirements.txt
+pip install selenium openpyxl webdriver-manager
 
 # 3. Executar sistema
 python verificador_pagamentos.py
@@ -143,9 +135,10 @@ python verificador_pagamentos.py
 ```
 
 **Opções disponíveis:**
-1. **Escolher quantidade** - Define número específico de clientes
-2. **Processar todos** - Executa a planilha completa
-3. **Cancelar** - Sair do sistema
+1. **Processar todos** - Executa a planilha completa
+2. **Processar quantidade específica** - Define número de clientes
+3. **Processamento em lotes** - Grupos com pausas
+4. **Continuar execução** - Retoma processamento interrompido
 
 ---
 
@@ -154,13 +147,12 @@ python verificador_pagamentos.py
 ```
 customer-payment-checker/
 ├── verificador_pagamentos.py    # Sistema principal
-├── executar.sh                  # Script de execução
+├── executar.sh                  # Script de execução Shell
 ├── requirements.txt             # Dependências Python
 ├── dados_clientes.xlsx          # Planilha de entrada (exemplo)
 ├── planilha_fechamento.xlsx     # Resultados gerados
 ├── .venv/                       # Ambiente virtual
-├── README.md                    # Documentação
-└── PARA_RECRUTADORES.md         # Análise técnica
+└── README.md                    # Documentação
 ```
 
 ---
@@ -173,9 +165,34 @@ customer-payment-checker/
 | João Silva | 1500.00 | 12345678901 | 2024-01-15 |
 
 ### Saída (planilha_fechamento.xlsx)
-| Nome | CPF | Valor | Status |
-|------|-----|-------|--------|
-| João Silva | 123.456.789-01 | R$ 1.500,00 | Em dia |
+| Nome | CPF | Valor | Status | Data Pagamento | Método |
+|------|-----|-------|--------|----------------|---------|
+| João Silva | 123.456.789-01 | R$ 1.500,00 | Em dia | 15/01/2024 | Cartão |
+
+---
+
+## 🔍 Conceitos Aplicados
+
+### **Programação Python Avançada**
+- Programação Orientada a Objetos
+- Manipulação de arquivos Excel com OpenPyXL
+- Tratamento robusto de exceções
+- Validação e formatação de dados
+- Interface de linha de comando interativa
+
+### **Web Scraping Profissional**
+- Selenium WebDriver para automação de navegadores
+- Estratégias anti-detecção e rate limiting
+- Recuperação automática de falhas de conexão
+- Parsing de dados web complexos
+- Gestão de sessões e cookies
+
+### **Automação e DevOps**
+- Scripts Shell para automação completa
+- Configuração automática de ambiente
+- Integração entre diferentes tecnologias
+- Logs estruturados para debugging
+- Deploy e execução simplificados
 
 ---
 
@@ -183,30 +200,37 @@ customer-payment-checker/
 
 ### Competências Demonstradas
 - **Web Scraping Avançado** - Selenium WebDriver com tratamento de erros
-- **Processamento de Dados** - Manipulação de planilhas Excel
+- **Processamento de Dados** - Manipulação robusta de planilhas Excel
 - **Interface de Usuário** - CLI intuitiva e progressiva
 - **Arquitetura de Software** - Código modular e bem estruturado
 - **Tratamento de Erros** - Sistema robusto com recovery automático
+- **Automação Completa** - From zero to hero com scripts Shell
 
 ### Aplicabilidade Profissional
-- **Automação de Processos** - Substituição de tarefas manuais
+- **Automação de Processos** - Substituição de tarefas manuais repetitivas
 - **Integração de Sistemas** - Ponte entre planilhas e sistemas web
 - **Business Intelligence** - Coleta e organização de dados empresariais
-- **Otimização Operacional** - Redução de tempo em processos repetitivos
+- **Otimização Operacional** - Redução significativa de tempo em processos
+- **Escalabilidade** - Sistema preparado para grandes volumes de dados
 
-**[→ Ver análise técnica completa](./PARA_RECRUTADORES.md)**
+### Casos de Uso Reais
+- Conciliação bancária automatizada
+- Verificação de status de cobranças
+- Auditoria de recebíveis
+- Monitoramento de inadimplência
+- Integração com ERPs via web scraping
 
 ---
 
-## 🔗 Conecte-se
+## 🤝 Contato e Portfólio
+
 
 <div align="center">
 
-**Desenvolvido por [Jonatas Pimenta](https://github.com/jonatas-pimenta)**
+**Desenvolvido por [Jonatas Pimenta](https://github.com/jonatas-pimenta)**  
+Estudante de Redes de Computadores | Buscando oportunidades de estágio em Tecnologia  
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
-[![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)](https://github.com/jonatas-pimenta)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
+[![GitHub](https://img.shields.io/badge/GitHub-Ver_Mais_Projetos-black?logo=github&style=for-the-badge)](https://github.com/jonatas-pimenta)
 
-**🎯 Projeto para demonstração de competências em automação Python**
-
-</div>
+🎯 Este projeto demonstra habilidades práticas em automação com Python, coleta de dados e manipulação de planilhas.

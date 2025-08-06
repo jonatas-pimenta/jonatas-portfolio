@@ -1,126 +1,89 @@
-# 🤖 Laboratório de Automação com Ansible
+# 🤖 Laboratório Ansible
 
 <div align="center">
 
-![Ansible](https://img.shields.io/badge/Ansible-2.9+-red.svg)
-![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-orange.svg)
-![IaC](https://img.shields.io/badge/IaC-Infrastructure_as_Code-blue.svg)
-![DevOps](https://img.shields.io/badge/DevOps-Automation-green.svg)
+![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat&logo=ansible&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
+![YAML](https://img.shields.io/badge/YAML-CB171E?style=flat&logo=yaml&logoColor=white)
+![SSH](https://img.shields.io/badge/SSH-4D4D4D?style=flat&logo=openssh&logoColor=white)
 
-**Automação de infraestrutura usando Ansible e princípios de IaC**
+**Laboratório prático de automação com Ansible - Gerenciamento de pacotes e serviços**
 
-[🚀 Instalação](#-como-usar) • [🏗️ Arquitetura](#-arquitetura-do-laboratório) • [📸 Demo](#-demonstração) • [💼 Para Recrutadores](./PARA_RECRUTADORES.md)
+[🚀 Instalação](#-instalação) • [💼 Funcionalidades](#-funcionalidades) • [🎯 Demo](#-demonstração-em-vídeo) • [💼 Para Recrutadores](#-valor-para-recrutadores)
 
 </div>
 
 ---
 
-## 📋 Sobre o Projeto
+## 📋 Descrição do Projeto
 
-Demonstração prática de automação de servidores Ubuntu usando Ansible e Infraestrutura como Código (IaC). O laboratório implementa um ambiente web padronizado e reproduzível através de um "Nó de Controle" que provisiona um "Nó Gerenciado".
+Este é um laboratório prático de Ansible implementado para automatizar a instalação e configuração de pacotes essenciais em servidores Linux. O projeto demonstra conceitos fundamentais de automação de infraestrutura, utilizando um ambiente real com servidor de controle e cliente gerenciado via SSH.
 
----
-
-## 🛠️ Tecnologias Utilizadas
-
-![Ansible](https://img.shields.io/badge/Ansible-2.9+-red?logo=ansible)
-![YAML](https://img.shields.io/badge/YAML-Configuration-yellow)
-![Apache](https://img.shields.io/badge/Apache-2.4+-orange?logo=apache)
-![VirtualBox](https://img.shields.io/badge/VirtualBox-Lab_Environment-blue)
+O laboratório implementa um cenário real de gerenciamento de configuração, onde um servidor Ansible (nó de controle) automatiza a instalação de ferramentas essenciais em um cliente remoto, incluindo servidor web Apache2.
 
 ---
 
-## 💼 Funcionalidades
+## 🎬 Demonstração em Vídeo
 
-### ⚙️ **Automação de Infraestrutura**
-- **Gerenciamento de Pacotes** - Atualização automática do cache apt
-- **Ferramentas Essenciais** - Instalação de htop, net-tools, curl, tmux
-- **Servidor Web** - Provisionamento completo do Apache2
-- **Idempotência** - Execuções múltiplas sem efeitos colaterais
+<div align="center">
 
-### 🛡️ **Boas Práticas**
-- **IaC (Infrastructure as Code)** - Configuração versionada
-- **Automação Declarativa** - Estado desejado via YAML
-- **Acesso SSH** - Conectividade segura entre nós
-- **Inventário Estruturado** - Gestão organizada de hosts
+<a href="https://drive.google.com/file/d/1sDR4jyO6Z-klkKrw6IW96EMYbydWNcSH/view?usp=drive_link" target="_blank">
+  <img src="https://img.shields.io/badge/Assistir_Vídeo_Demo-red?style=for-the-badge&logo=youtube&logoColor=white" alt="Assistir vídeo de demonstração">
+</a>
+
+<p style="margin-top: 12px;">
+💡 <em>Veja o Ansible em ação — automação real funcionando.</em>
+</p>
+
+</div>
+
+**O que você verá no vídeo:**
+- Execução completa do playbook Ansible
+- Instalação automatizada de pacotes
+- Configuração do servidor Apache2
+- Validação dos resultados em tempo real
+- Arquitetura do laboratório explicada
 
 ---
 
 ## 🏗️ Arquitetura do Laboratório
 
 <p align="center">
-  <img src="diagrama-arquitetura.png" alt="Diagrama da Arquitetura do Laboratório Ansible" width="70%">
+  <img src="diagrama-arquitetura.png" width="70%" alt="Arquitetura do Laboratório Ansible">
 </p>
 
-**Infraestrutura VirtualBox:**
-- **Nó de Controle (192.168.15.13)** - Servidor Ansible com playbooks
-- **Nó Gerenciado (192.168.15.5)** - Cliente configurado remotamente via SSH
+
+**Comunicação:** Gerenciamento via SSH com autenticação por chave
 
 ---
 
-## 📋 Pré-requisitos
-
-### Nó de Controle
-- **SO:** Linux ou macOS *(Windows: usar WSL)*
-- **Software:** Ansible + Python 3.8+
-
-### Nós Gerenciados  
-- **Conectividade:** Acesso SSH configurado
-- **Python:** Versão 2.7 ou 3.5+ para execução das tarefas
-
----
-
-## 🚀 Como Usar
-
-1. **Clone o repositório:**
-   ```bash
-   git clone [seu-repo] && cd laboratorio-ansible
-   ```
-
-2. **Configure o inventário:**
-   ```bash
-   # Ajuste o arquivo inventario.ini com IPs corretos
-   nano inventario.ini
-   ```
-
-3. **Teste a conexão:**
-   ```bash
-   ansible meus_clientes -m ping
-   ```
-   *Saída esperada: resposta `SUCCESS` em verde*
-
-4. **Execute o playbook:**
-   ```bash
-   ansible-playbook instalar_programas.yml
-   ```
-
----
-
-## 📁 Estrutura do Projeto
-
-```
-laboratorio-ansible/
-├── instalar_programas.yml    # Playbook principal
-├── inventario.ini           # Inventário de hosts
-├── diagrama-arquitetura.png # Arquitetura visual
-└── resultado-playbook.png   # Screenshot da execução
-```
-
----
-
-## 📸 Demonstração
+## 🚀 Resultado da Execução
 
 <p align="center">
-  <img src="resultado-playbook.png" width="70%" alt="Resultado da Execução do Playbook">
+  <img src="resultado-playbook.png" width="80%" alt="Execução bem-sucedida do playbook Ansible">
 </p>
 
+**Resultado demonstrado:**
+- ✅ 3 tarefas executadas com sucesso
+- ✅ 0 falhas ou erros
+- ✅ Instalação e ativação do Apache2 completa
+- ✅ Idempotência confirmada (changed=0)
+
 ---
 
-<details>
-<summary><strong>💻 Código do Playbook (instalar_programas.yml)</strong></summary>
+## 🚀 Implementação Atual
 
+### Arquivo de Inventário (`hosts`)
+```ini
+[meus_clientes]
+cliente_prod ansible_host=192.168.15.5 ansible_user=osboxes
+
+[meus_clientes:vars]
+ansible_python_interpreter=/usr/bin/python3
+```
+
+### Playbook Principal (`instalar_programas.yml`)
 ```yaml
----
 - name: Instalar pacotes essenciais no cliente
   hosts: meus_clientes
   become: yes
@@ -142,19 +105,150 @@ laboratorio-ansible/
     - name: Iniciar e ativar o Apache2
       service:
         name: apache2
-        enabled: yes
         state: started
+        enabled: yes
 ```
-
-</details>
 
 ---
 
-## 🔗 Conecte-se Comigo
+## 💼 Funcionalidades Implementadas
+
+### Gerenciamento de Pacotes
+- **Atualização automática** - Cache do apt sempre atualizado
+- **Instalação de ferramentas** - htop, net-tools, curl, tmux
+- **Servidor Web** - Apache2 instalado e configurado
+- **Idempotência** - Execuções repetidas não causam problemas
+
+### Gerenciamento de Serviços
+- **Inicialização automática** - Apache2 ativo no boot
+- **Status de serviço** - Verificação se serviços estão rodando
+- **Configuração persistente** - Mudanças mantidas após reinicialização
+
+### Recursos Utilizados
+- **Módulo apt** - Gerenciamento de pacotes Debian/Ubuntu
+- **Módulo service** - Controle de serviços systemd
+- **Privilege escalation** - Uso de `become: yes` para sudo
+- **Inventário estruturado** - Organização de hosts e variáveis
+
+---
+
+## 📋 Pré-requisitos
+
+- **Ansible** instalado no servidor de controle
+- **SSH** configurado entre servidor e cliente
+- **Python 3** nos hosts gerenciados
+- **Sudo** configurado para o usuário Ansible
+- **Sistema:** Ubuntu/Debian (testado com apt)
+
+---
+
+## 🚀 Como Reproduzir
+
+### 1. Configurar Ambiente
+```bash
+# No servidor de controle
+sudo apt update
+sudo apt install ansible
+
+# Configurar SSH sem senha
+ssh-keygen
+ssh-copy-id osboxes@192.168.15.5
+```
+
+### 2. Criar Arquivos
+```bash
+# Criar inventário
+cat > hosts << EOF
+[meus_clientes]
+cliente_prod ansible_host=192.168.15.5 ansible_user=osboxes
+
+[meus_clientes:vars]
+ansible_python_interpreter=/usr/bin/python3
+EOF
+
+# Criar playbook (conforme código mostrado acima)
+```
+
+### 3. Executar Automação
+```bash
+# Testar conectividade
+ansible -i hosts meus_clientes -m ping
+
+# Executar playbook
+ansible-playbook -i hosts instalar_programas.yml -K
+```
+
+---
+
+## 📁 Estrutura Real do Projeto
+
+```
+laboratorio-ansible/
+├── hosts                        # Inventário de hosts
+├── instalar_programas.yml       # Playbook principal
+├── resultado-playbook.png       # Screenshot da execução
+├── diagrama-arquitetura.png     # Diagrama da infraestrutura
+└── README.md                    # Esta documentação
+```
+
+---
+
+## 🔍 Conceitos Demonstrados
+
+### **Automação de Infraestrutura**
+- Gerenciamento de configuração via código
+- Execução remota de comandos via SSH
+- Idempotência nas operações
+- Estruturação de inventários
+
+### **Administração Linux**
+- Gerenciamento de pacotes apt
+- Controle de serviços systemd
+- Configuração de usuários e permissões
+- Automatização de tarefas administrativas
+
+### **DevOps Básico**
+- Infrastructure as Code conceitual
+- Documentação de processos
+- Versionamento de configurações
+- Reprodutibilidade de ambiente
+
+---
+
+## 💼 Valor para Recrutadores
+
+### Competências Demonstradas
+- **Ansible Fundamentals** - Playbooks, inventários e módulos básicos
+- **Linux System Administration** - Gerenciamento de pacotes e serviços
+- **SSH e Networking** - Configuração de acesso remoto seguro
+- **YAML** - Estruturação de arquivos de configuração
+- **Troubleshooting** - Execução e validação de automações
+- **Documentação** - Registro claro de processos e resultados
+
+### Aplicabilidade Profissional
+- **Automação de Servidores** - Base para ambientes maiores
+- **Padronização** - Instalação consistente de ferramentas
+- **Economia de Tempo** - Substituição de tarefas manuais
+- **Fundação DevOps** - Primeiro passo para IaC mais complexo
+
+### Evolução Possível
+- Expansão para múltiplos hosts
+- Implementação de roles reutilizáveis
+- Integração com CI/CD
+- Gerenciamento de configurações mais complexas
+
+---
+
+## 🤝 Contato e Portfólio
 
 <div align="center">
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
-[![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?logo=github)](https://github.com/jonatas-pimenta)
+**Desenvolvido por [Jonatas Pimenta](https://github.com/jonatas-pimenta)**  
+Estudante de Redes de Computadores | Buscando oportunidades de estágio em Tecnologia  
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
+[![GitHub](https://img.shields.io/badge/GitHub-Ver_Mais_Projetos-black?logo=github&style=for-the-badge)](https://github.com/jonatas-pimenta)
+
+🎯 Este projeto demonstra conhecimentos práticos em Ansible e automação de infraestrutura Linux.
 
 </div>
