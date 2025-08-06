@@ -27,12 +27,12 @@ Este sistema é ideal para administradores de rede, técnicos em TI e estudantes
 
 ### Interface Principal
 <p align="center">
-  <img src="screenshots/interface_principal.png" width="70%" alt="Interface Principal da Aplicação">
+  <img src="screenshot_diagnostico.png" width="70%" alt="Interface Principal da Aplicação">
 </p>
 
 ### Exemplo de Uso - Scanner de Portas
 <p align="center">
-  <img src="screenshots/scanner_portas.png" width="70%" alt="Scanner de Portas em Funcionamento">
+  <img src="screenshot_scanner.png" width="70%" alt="Scanner de Portas em Funcionamento">
 </p>
 
 ---
