@@ -1,0 +1,98 @@
+# Histórico de Backups - Criado em 03/06/2025 08:27:14
+
+2025-06-03 08:28:47 - 
+============================================================
+2025-06-03 08:28:47 - NOVA SESSÃO DE BACKUP INICIADA
+2025-06-03 08:28:47 - Data/Hora: 03/06/2025 08:28:47
+2025-06-03 08:28:47 - Origem: /home/lion/Documentos/Projetos/conecta_backup/backup_gui.py
+2025-06-03 08:28:47 - Destino: /home/lion/Área de trabalho
+2025-06-03 08:28:47 - Tipo: Arquivo
+2025-06-03 08:28:47 - ============================================================
+2025-06-03 08:28:47 - Iniciando processo de backup...
+2025-06-03 08:28:47 - Executando backup de arquivo usando rsync...
+2025-06-03 08:28:47 - Copiando de /home/lion/Documentos/Projetos/conecta_backup/backup_gui.py para /home/lion/Área de trabalho...
+2025-06-03 08:28:47 - sending incremental file list
+2025-06-03 08:28:47 - backup_gui.py
+2025-06-03 08:28:47 - 
+2025-06-03 08:28:47 - 12,49K 100%    0,00kB/s    0:00:00
+2025-06-03 08:28:47 - 12,49K 100%    0,00kB/s    0:00:00 (xfr#1, to-chk=0/1)
+2025-06-03 08:28:47 - 
+2025-06-03 08:28:47 - sent 12,60K bytes  received 35 bytes  25,27K bytes/sec
+2025-06-03 08:28:47 - total size is 12,49K  speedup is 0,99
+2025-06-03 08:28:47 - BACKUP DE ARQUIVO CONCLUÍDO COM SUCESSO!
+2025-06-03 08:28:47 - Sessão finalizada em 03/06/2025 08:28:47
+2025-06-03 08:28:47 - ============================================================
+
+2025-06-03 08:35:12 - [SEGURANÇA] Log limpo com sucesso - 03/06/2025 08:35:12
+2025-06-03 09:03:37 - [SEGURANÇA] Log limpo com sucesso - 03/06/2025 09:03:37
+2025-06-09 08:14:28 - [SEGURANÇA] Log limpo com sucesso - 09/06/2025 08:14:28
+2025-06-09 08:45:44 - 
+============================================================
+2025-06-09 08:45:44 - NOVA SESSÃO DE BACKUP INICIADA
+2025-06-09 08:45:44 - Data/Hora: 09/06/2025 08:45:44
+2025-06-09 08:45:44 - Origem: /home/lion/Documentos/Projetos/Backup _Manager/backup_history.log
+2025-06-09 08:45:44 - Destino: /home/lion/Área de trabalho
+2025-06-09 08:45:44 - Tipo: Arquivo
+2025-06-09 08:45:44 - ============================================================
+2025-06-09 08:45:44 - Iniciando processo de backup...
+2025-06-09 08:45:44 - Executando backup de arquivo usando rsync...
+2025-06-09 08:45:44 - Copiando de /home/lion/Documentos/Projetos/Backup _Manager/backup_history.log para /home/lion/Área de trabalho...
+2025-06-09 08:45:44 - sending incremental file list
+2025-06-09 08:45:44 - backup_history.log
+2025-06-09 08:45:44 - 
+2025-06-09 08:45:44 - 2,35K 100%    0,00kB/s    0:00:00
+2025-06-09 08:45:44 - 2,35K 100%    0,00kB/s    0:00:00 (xfr#1, to-chk=0/1)
+2025-06-09 08:45:44 - 
+2025-06-09 08:45:44 - sent 2,46K bytes  received 35 bytes  5,00K bytes/sec
+2025-06-09 08:45:44 - total size is 2,35K  speedup is 0,94
+2025-06-09 08:45:44 - BACKUP DE ARQUIVO CONCLUÍDO COM SUCESSO!
+2025-06-09 08:45:44 - Sessão finalizada em 09/06/2025 08:45:44
+2025-06-09 08:45:44 - ============================================================
+
+2025-06-09 08:46:27 - [SEGURANÇA] Log limpo com sucesso - 09/06/2025 08:46:27
+2025-06-23 09:04:39 - 
+============================================================
+2025-06-23 09:04:39 - NOVA SESSÃO DE BACKUP INICIADA
+2025-06-23 09:04:39 - Data/Hora: 23/06/2025 09:04:39
+2025-06-23 09:04:39 - Origem: /home/lion/Documentos/Projetos/Backup _Manager/backup_history.log
+2025-06-23 09:04:39 - Destino: /home/lion/Área de trabalho
+2025-06-23 09:04:39 - Tipo: Arquivo
+2025-06-23 09:04:39 - ============================================================
+2025-06-23 09:04:39 - Iniciando processo de backup...
+2025-06-23 09:04:39 - Executando backup de arquivo usando rsync...
+2025-06-23 09:04:39 - Copiando de /home/lion/Documentos/Projetos/Backup _Manager/backup_history.log para /home/lion/Área de trabalho...
+2025-06-23 09:04:39 - sending incremental file list
+2025-06-23 09:04:39 - backup_history.log
+2025-06-23 09:04:39 - 
+2025-06-23 09:04:39 - 3,77K 100%    0,00kB/s    0:00:00
+2025-06-23 09:04:39 - 3,77K 100%    0,00kB/s    0:00:00 (xfr#1, to-chk=0/1)
+2025-06-23 09:04:39 - 
+2025-06-23 09:04:39 - sent 3,88K bytes  received 35 bytes  7,84K bytes/sec
+2025-06-23 09:04:39 - total size is 3,77K  speedup is 0,96
+2025-06-23 09:04:39 - BACKUP DE ARQUIVO CONCLUÍDO COM SUCESSO!
+2025-06-23 09:04:39 - Sessão finalizada em 23/06/2025 09:04:39
+2025-06-23 09:04:39 - ============================================================
+
+2025-06-23 09:26:50 - 
+============================================================
+2025-06-23 09:26:50 - NOVA SESSÃO DE BACKUP INICIADA
+2025-06-23 09:26:50 - Data/Hora: 23/06/2025 09:26:50
+2025-06-23 09:26:50 - Origem: /home/lion/Documentos/Projetos/Backup _Manager/backup_history.log
+2025-06-23 09:26:50 - Destino: /home/lion/Área de trabalho
+2025-06-23 09:26:50 - Tipo: Arquivo
+2025-06-23 09:26:50 - ============================================================
+2025-06-23 09:26:50 - Iniciando processo de backup...
+2025-06-23 09:26:50 - Executando backup de arquivo usando rsync...
+2025-06-23 09:26:50 - Copiando de /home/lion/Documentos/Projetos/Backup _Manager/backup_history.log para /home/lion/Área de trabalho...
+2025-06-23 09:26:50 - sending incremental file list
+2025-06-23 09:26:50 - backup_history.log
+2025-06-23 09:26:50 - 
+2025-06-23 09:26:50 - 5,11K 100%    0,00kB/s    0:00:00
+2025-06-23 09:26:50 - 5,11K 100%    0,00kB/s    0:00:00 (xfr#1, to-chk=0/1)
+2025-06-23 09:26:50 - 
+2025-06-23 09:26:50 - sent 5,22K bytes  received 35 bytes  10,52K bytes/sec
+2025-06-23 09:26:50 - total size is 5,11K  speedup is 0,97
+2025-06-23 09:26:50 - BACKUP DE ARQUIVO CONCLUÍDO COM SUCESSO!
+2025-06-23 09:26:50 - Sessão finalizada em 23/06/2025 09:26:50
+2025-06-23 09:26:50 - ============================================================
+

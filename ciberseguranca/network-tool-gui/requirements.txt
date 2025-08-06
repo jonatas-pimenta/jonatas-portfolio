@@ -1,0 +1,16 @@
+# Network Tool GUI - Dependências Python
+# 
+# Este projeto utiliza apenas bibliotecas padrão do Python:
+# - tkinter (interface gráfica)
+# - threading (multithreading)
+# - socket (conectividade de rede)
+# - subprocess (execução de comandos)
+# - queue (comunicação entre threads)
+# - datetime (timestamps)
+#
+# Versão mínima requerida: Python 3.6+
+#
+# Para sistemas Linux, você pode precisar instalar tkinter separadamente:
+# Ubuntu/Debian: sudo apt-get install python3-tk
+# Fedora/CentOS: sudo yum install tkinter
+# Arch Linux: sudo pacman -S tk

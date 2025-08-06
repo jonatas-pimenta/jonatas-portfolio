@@ -1,0 +1,20 @@
+# Dependências Python para Backup Manager
+
+# Interface gráfica (geralmente já vem com Python 3.x)
+# tkinter - GUI toolkit padrão do Python
+
+# Bibliotecas padrão utilizadas (built-in):
+# - subprocess - Para executar o script bash
+# - threading - Para execução assíncrona
+# - os - Operações do sistema operacional
+# - datetime - Manipulação de data/hora
+# - pathlib - Manipulação de caminhos
+
+# Dependências do sistema (precisam estar instaladas):
+# - rsync - Ferramenta de sincronização (apt install rsync)
+# - bash - Shell script interpreter
+
+# Para instalação das dependências do sistema no Ubuntu/Debian:
+# sudo apt update && sudo apt install rsync
+
+# Nenhuma dependência Python externa é necessária para este projeto
