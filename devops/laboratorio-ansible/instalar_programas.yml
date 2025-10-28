@@ -1,0 +1,24 @@
+---
+- name: Instalar pacotes essenciais no cliente
+  hosts: meus_clientes
+  become: yes
+  tasks:
+    - name: Atualizar cache do apt
+      apt:
+        update_cache: yes
+
+    - name: Instalar pacotes
+      apt:
+        name:
+          - htop
+          - net-tools
+          - curl
+          - tmux
+          - apache2
+        state: present
+
+    - name: Iniciar e ativar o Apache2
+      service:
+        name: apache2
+        enabled: yes
+        state: started

@@ -1,0 +1,5 @@
+# Dependências essenciais para Sistema de Estoque com Interface Gráfica
+pymongo==4.14.1         # Conexão com MongoDB
+pandas==2.3.1           # Manipulação de dados para relatórios
+openpyxl==3.1.5         # Exportação de relatórios para Excel
+python-dateutil==2.9.0.post0  # Manipulação de datas

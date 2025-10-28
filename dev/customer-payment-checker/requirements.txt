@@ -1,0 +1,37 @@
+# ==========================================
+# Customer Payment Checker - Dependencies
+# ==========================================
+# 
+# Dependências principais do projeto
+# Testado em Python 3.12.3 / Ubuntu 24.04.2 LTS
+# 
+# Para instalar: pip install -r requirements.txt
+# ==========================================
+
+# Manipulação de planilhas Excel
+openpyxl==3.1.2
+
+# Automação de navegador web
+selenium==4.15.2
+
+# Gerenciamento automático de drivers
+webdriver-manager==4.0.1
+
+# ==========================================
+# Dependências de desenvolvimento (opcional)
+# ==========================================
+# Descomente se precisar de ferramentas de dev:
+
+# pytest==7.4.3           # Testes unitários
+# black==23.9.1            # Formatação de código  
+# flake8==6.0.0            # Linting
+# mypy==1.6.1              # Type checking
+# pre-commit==3.5.0        # Git hooks
+
+# ==========================================
+# Informações de compatibilidade:
+# ==========================================
+# - Ubuntu 24.04.2 LTS
+# - Google Chrome 138.0.7204.157 (64 bits)
+# - Python 3.12.3
+# - Visual Studio Code 1.102.1

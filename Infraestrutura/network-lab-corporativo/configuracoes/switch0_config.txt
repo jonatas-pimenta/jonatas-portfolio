@@ -1,0 +1,97 @@
+! Configuração do Switch0 - Switch Principal Corporativo
+! Projeto: Rede Corporativa Segmentada
+
+! Configuração básica
+hostname Switch-Corporativo
+enable secret cisco123
+
+! Configuração de VLANs por Departamento
+vlan 10
+ name RH
+vlan 20
+ name Vendas  
+vlan 30
+ name Producao
+vlan 40
+ name Financeiro
+vlan 99
+ name TI_MGMT
+vlan 100
+ name Diretoria
+
+! Configuração de interfaces de acesso - RH (5 PCs)
+interface range fa0/1-5
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+ no shutdown
+
+! Configuração de interfaces de acesso - Vendas (5 PCs)
+interface range fa0/6-10
+ switchport mode access
+ switchport access vlan 20
+ spanning-tree portfast
+ no shutdown
+
+! Configuração de interfaces de acesso - Produção (14 PCs)
+interface range fa0/11-24
+ switchport mode access
+ switchport access vlan 30
+ spanning-tree portfast
+ no shutdown
+
+! Configuração de interfaces de acesso - Financeiro (3 PCs)
+interface range gi0/2-4
+ switchport mode access
+ switchport access vlan 40
+ spanning-tree portfast
+ no shutdown
+
+! Configuração de interfaces de acesso - TI (2 PCs + 1 Servidor)
+interface range gi0/5-7
+ switchport mode access
+ switchport access vlan 99
+ spanning-tree portfast
+ no shutdown
+
+! Configuração de interface de acesso - Diretoria (1 PC)
+interface gi0/8
+ switchport mode access
+ switchport access vlan 100
+ spanning-tree portfast
+ no shutdown
+
+! Interface trunk para o roteador (Router-on-a-Stick)
+interface gi0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30,40,99,100
+ no shutdown
+
+! Interface de gerência no Switch
+interface vlan 99
+ ip address 192.168.99.10 255.255.255.0
+ no shutdown
+
+! Gateway padrão para gerência
+ip default-gateway 192.168.99.1
+
+! Configuração de Spanning Tree
+spanning-tree mode pvst
+spanning-tree vlan 10 priority 4096
+spanning-tree vlan 20 priority 4096
+spanning-tree vlan 30 priority 4096
+spanning-tree vlan 40 priority 4096
+spanning-tree vlan 99 priority 4096
+spanning-tree vlan 100 priority 4096
+
+! Configurações de segurança
+line con 0
+ password cisco123
+ login
+line vty 0 4
+ password cisco123
+ login
+
+! Salvar configuração
+end
+copy running-config startup-config

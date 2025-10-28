@@ -1,0 +1,34 @@
+{
+  "filepath": "/home/lion/Documentos/Projetos/jonatas-portfolio/devops/backup-manager/config.json",
+  "backup_settings": {
+    "default_destination": "",
+    "exclude_patterns": [
+      "*.tmp",
+      "*.log", 
+      "*.swp",
+      ".DS_Store",
+      "Thumbs.db",
+      "*.~lock*"
+    ],
+    "rsync_options": {
+      "archive": true,
+      "verbose": true,
+      "human_readable": true,
+      "progress": true,
+      "delete": true,
+      "stats": true
+    },
+    "interface": {
+      "window_title": "Backup Manager",
+      "window_size": "600x500",
+      "theme": "default"
+    },
+    "logging": {
+      "max_log_size_mb": 10,
+      "backup_old_logs": true,
+      "log_level": "INFO"
+    }
+  },
+  "version": "1.0.0",
+  "last_updated": "2024-01-01"
+}
