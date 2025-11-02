@@ -30,6 +30,9 @@ Abaixo está a lista de projetos organizados por categoria.
 - [network-lab-corporativo](./Infraestrutura/network-lab-corporativo) – Rede corporativa segmentada com VLANs, ACLs e DHCP Relay (Cisco).
 - [windows-server-azure-lab](./Infraestrutura/windows-server-azure-lab) – Infraestrutura IaaS completa no Microsoft Azure (AD, DNS, DHCP).
 
+### Digitalização e Automação (BPA)
+- [PowerFlow-Automacao-TI](./automacao-bpa/PowerFlow-Automacao-TI/) – Automação de processos de TI com Microsoft Power Platform (Low-Code).
+
 ### Utilitários & Scripts
 - [virtualization](./utility-scripts/virtualization) – Scripts feito para resolver conflitos entre hipervisores no linux.
 
@@ -52,10 +55,10 @@ Provisionamento de uma infraestrutura corporativa completa (IaaS) no Microsoft A
 
 ---
 <div align="center">
+ 
+Estudante de Redes de Computadores | Aprendizado contínuo através de projetos práticos 
 
- Estudante de Redes de Computadores | Buscando oportunidades de estágio em Tecnologia  
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-black?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
 [![GitHub](https://img.shields.io/badge/GitHub-Ver_Mais_Projetos-black?logo=github&style=for-the-badge)](https://github.com/jonatas-pimenta)
 
 </div>

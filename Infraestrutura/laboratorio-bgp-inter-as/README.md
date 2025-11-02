@@ -82,17 +82,13 @@ router bgp 65001
  network 10.0.12.0 mask 255.255.255.0
  network 10.0.13.0 mask 255.255.255.0
  ```
- ## 🤝 Contato e Portfólio
+ ---
+ 
+ <div align="center">
+ 
+Estudante de Redes de Computadores | Aprendizado contínuo através de projetos práticos 
 
-<div align="center">
-
-**Desenvolvido por [Jonatas Pimenta](https://github.com/jonatas-pimenta)** 
-
-Estudante de Redes de Computadores | Buscando oportunidades de estágio em Tecnologia  
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-black?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
 [![GitHub](https://img.shields.io/badge/GitHub-Ver_Mais_Projetos-black?logo=github&style=for-the-badge)](https://github.com/jonatas-pimenta)
-
-🎯 Este projeto demonstra habilidades práticas em roteamento BGP Inter-AS, troubleshooting avançado de redes e documentação técnica.
 
 </div>

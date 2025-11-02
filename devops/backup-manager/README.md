@@ -266,16 +266,11 @@ def run_backup_thread(self, cmd):
 
 ---
 
-## 🤝 Contato e Portfólio
-
 <div align="center">
+ 
+Estudante de Redes de Computadores | Aprendizado contínuo através de projetos práticos 
 
-**Desenvolvido por [Jonatas Pimenta](https://github.com/jonatas-pimenta)**  
-Estudante de Redes de Computadores | Buscando oportunidades de estágio em Tecnologia  
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jonatas--pimenta-black?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/jonatas-pimenta-9ab861288/)
 [![GitHub](https://img.shields.io/badge/GitHub-Ver_Mais_Projetos-black?logo=github&style=for-the-badge)](https://github.com/jonatas-pimenta)
-
-🎯 Este projeto demonstra integração Python+Bash para automação DevOps profissional.
 
 </div>
