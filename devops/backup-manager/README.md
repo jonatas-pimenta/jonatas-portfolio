@@ -1,190 +1,103 @@
-# 💾 Backup Manager
+git clone https://github.com/jonatas-pimenta/jonatas-portfolio.git
+# Backup Manager – Automação de Backups em Linux
 
-<div align="center">
+Aplicação profissional para Linux que combina interface gráfica em Python (Tkinter) com engine de backup em Bash utilizando rsync. O projeto oferece backup de arquivos e pastas com histórico persistente, execução segura e operação responsiva.
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![Bash](https://img.shields.io/badge/Bash-4EAA25?style=flat&logo=gnu-bash&logoColor=white)
-![Tkinter](https://img.shields.io/badge/Tkinter-GUI-FF6B35?style=flat&logo=python&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
+## Arquitetura Implementada
 
-**Sistema de backup com interface gráfica Python e engine robusta em Bash**
-
-[🚀 Instalação](#-como-executar) • [💼 Funcionalidades](#-funcionalidades) • [🎯 Arquitetura](#-arquitetura-do-sistema) • [💼 Para Recrutadores](#-valor-para-recrutadores)
-
-</div>
-
----
-
-## 📋 Descrição do Projeto
-
-O **Backup Manager** é uma aplicação completa para Linux que permite realizar backups de arquivos ou pastas de forma eficiente, com interface gráfica amigável desenvolvida em Python (Tkinter). O backup é realizado utilizando o comando `rsync` para arquivos ou script Bash (`backup_engine.sh`) para pastas, garantindo máxima eficiência e confiabilidade.
-
-O sistema mantém um histórico completo de todas as operações de backup realizadas, mesmo após fechar o programa, facilitando o acompanhamento e auditoria das operações. Desenvolvido com foco em usabilidade e robustez para ambientes de produção.
-
----
-
-## 🏗️ Arquitetura do Sistema
+O sistema adota uma arquitetura híbrida Python + Bash para combinar usabilidade (GUI) com eficiência e controle (rsync e shell script).
 
 <p align="center">
   <img src="screenshots/interface-main.png" width="70%" alt="Interface Principal do Backup Manager">
 </p>
 
-### 🔧 **Fluxo de Operação**
+| Componente | Detalhe Técnico | Função Principal |
+| :--- | :--- | :--- |
+| **Interface (GUI)** | Python 3.6+ com Tkinter | Seleção de origem/destino, escolha de modo, visualização de log |
+| **Engine de Backup** | Bash (backup_engine.sh) + rsync | Execução de backups de pastas e arquivos |
+| **Sincronização** | rsync com flags -avh | Cópia eficiente e incremental |
+| **Concorrência** | Threading na GUI | Evita travamento da interface durante a execução |
+| **Persistência de Logs** | backup_history.log | Histórico contínuo entre sessões |
+| **Segurança Operacional** | Lock files + validações | Previne concorrência e destinos inválidos |
 
-```
-┌─────────────────────────┐    subprocess    ┌─────────────────────────┐
-│     Python GUI          │ ===============> │    Bash Engine          │
-│    (backup_gui.py)      │                  │  (backup_engine.sh)     │
-│                         │                  │                         │
-│ • Interface Tkinter     │                  │ • rsync operations      │
-│ • Seleção arquivo/pasta │                  │ • Error handling        │
-│ • Threading para UI     │                  │ • Progress tracking     │
-│ • Histórico visual      │                  │ • Lock file prevention │
-│ • Proteção com senha    │                  │ • Log detalhado         │
-└─────────────────────────┘                  └─────────────────────────┘
-            │                                             │
-            └─────────────────┬───────────────────────────┘
-                              │
-                    ┌─────────────────────┐
-                    │   Sistema de Logs   │
-                    │ (backup_history.log)│
-                    │                     │
-                    │ • Histórico contínuo│
-                    │ • Timestamps        │
-                    │ • Status tracking   │
-                    │ • Separadores       │
-                    └─────────────────────┘
-```
+## Principais Funcionalidades
 
-**Características Técnicas:**
-- **Dual Mode:** rsync direto para arquivos, script Bash para pastas
-- **Threading:** Interface não trava durante operações
-- **Histórico Persistente:** Logs mantidos entre sessões
-- **Proteção de Dados:** Sistema de senha para limpeza de logs
-- **Real-time Feedback:** Status e erros exibidos instantaneamente
+**Interface Gráfica e Usabilidade**
+- Seleção visual de arquivos ou pastas para backup
+- Escolha de modo (arquivo via rsync direto, pasta via engine Bash)
+- Log em tempo real na interface durante a execução
+- Histórico visual carregado ao iniciar a aplicação
 
----
+**Engine de Backup Inteligente**
+- rsync otimizado para arquivos individuais
+- Script Bash dedicado para pastas com maior controle
+- Proteção contra concorrência por lock file
+- Validação de caminhos de origem e destino
 
-## 💼 Funcionalidades
+**Sistema de Auditoria**
+- Histórico contínuo em backup_history.log
+- Timestamps precisos e status de cada operação
+- Log visual com opção de limpeza protegida por senha
 
-### 🎯 **Interface Gráfica Moderna**
-- **Navegador integrado** - Seleção fácil de origem e destino
-- **Dual mode selection** - Escolha entre backup de arquivo ou pasta
-- **Real-time logging** - Log detalhado exibido na tela durante operação
-- **Histórico visual** - Carregamento automático de backups anteriores
+**Recursos Avançados**
+- Threading assíncrono mantendo a GUI responsiva
+- Feedback imediato de erros e progresso
+- Persistência do histórico entre sessões
+- Tratamento robusto de exceções na GUI e na engine
 
-### 🔧 **Engine de Backup Inteligente**
-- **rsync otimizado** - Para arquivos individuais (rápido e eficiente)
-- **Script Bash robusto** - Para pastas (controle total do processo)
-- **Proteção contra concorrência** - Sistema de lock files
-- **Verificações de segurança** - Validação de origem e destino
+## Aplicação Profissional / Valor para Empresas
 
-### 📊 **Sistema de Auditoria**
-- **Histórico contínuo** - Registro de todas as operações em `backup_history.log`
-- **Timestamps precisos** - Data e hora de cada operação
-- **Status detalhado** - Sucesso, falhas e mensagens de erro
-- **Proteção com senha** - Limpeza segura do log visual
+Backups confiáveis são críticos em operações de TI. Este projeto demonstra uma solução de automação de backup com interface amigável, adequada para equipes que precisam combinar usabilidade e robustez operacional.
 
-### ⚙️ **Recursos Avançados**
-- **Threading assíncrono** - Interface responsiva durante backups
-- **Mensagens em tempo real** - Status e progresso instantâneos
-- **Persistência de dados** - Histórico mantido entre sessões
-- **Error handling robusto** - Tratamento completo de exceções
+Valores empresariais entregues:
+- Reduz risco de perda de dados com execução confiável e auditável
+- Aumenta produtividade: um clique executa backup com logs persistentes
+- Facilita compliance: histórico detalhado para auditoria
+- Opera em Linux nativo usando ferramentas padrão (rsync, bash)
+- Separação clara de responsabilidades (GUI vs engine) para manutenção simples
 
----
+## Competências Técnicas Demonstradas
 
-## 📋 Pré-requisitos
-
-- **Python 3.6+** com Tkinter
-- **Bash** (shell padrão Linux)
-- **rsync** (geralmente já instalado)
-- **Sistema operacional:** Linux
-
-### Verificação de Dependências
-```bash
-# Verificar Python e Tkinter
-python3 -c "import tkinter; print('Tkinter OK')"
-
-# Verificar rsync
-rsync --version
-
-# Verificar Bash
-bash --version
-```
-
----
-
-## 🚀 Como Executar
-
-### 1. Preparação do Ambiente
-```bash
-# Clone o repositório
-git clone https://github.com/jonatas-pimenta/jonatas-portfolio.git
-cd devops/backup-manager
-
-# (Opcional) Criar ambiente virtual
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 2. Configuração de Permissões
-```bash
-# Dar permissão de execução ao script Bash
-chmod +x backup_engine.sh
-```
-
-### 3. Execução da Aplicação
-```bash
-# Executar interface gráfica
-python3 backup_gui.py
-```
-
-### 4. Usando a Interface
-1. **Escolher tipo** - Selecione "Arquivo" ou "Pasta" para backup
-2. **Selecionar origem** - Use o botão "Browse" para escolher o que será copiado
-3. **Escolher destino** - Defina onde o backup será salvo
-4. **Executar backup** - Clique em "Run Backup" e acompanhe o progresso
-5. **Verificar histórico** - O log completo fica em `backup_history.log`
-
----
+- **Python GUI (Tkinter):** Interface desktop responsiva com threading
+- **Bash e rsync:** Automação de cópia incremental e confiável
+- **DevOps/Infra:** Controle de concorrência, validação de paths, lock files
+- **Logging e Auditoria:** Histórico persistente e feedback em tempo real
+- **Integração Python + Shell:** Orquestração multi-linguagem via subprocess
+- **Tratamento de Erros:** Gestão de exceções na GUI e no shell script
+- **Segurança Operacional:** Proteção de limpeza de logs por senha
+- **Arquitetura Desktop:** Design modular separando UI e engine
 
 ## 📁 Estrutura do Projeto
 
 ```
 backup-manager/
 ├── backup_gui.py           # Interface gráfica principal (Python/Tkinter)
-├── backup_engine.sh        # Script Bash para backup de pastas usando rsync
-├── backup_history.log      # Arquivo de histórico de todos os backups
-├── requirements.txt        # Dependências documentadas
-├── config.json            # Configurações opcionais
-├── screenshots/            # Capturas da interface
-│   ├── interface-main.png    # Tela principal
-│   └── backup-progress.png   # Progresso do backup
-└── README.md              # Esta documentação
+├── backup_engine.sh        # Engine Bash/rsync para pastas
+├── backup_history.log      # Histórico persistente de operações
+├── requirements.txt        # Dependências Python
+├── config.json             # Configurações opcionais
+├── screenshots/
+│   ├── interface-main.png
+│   └── backup-progress.png
+└── README.md
 ```
-
----
 
 ## 🔧 Demonstração Técnica
 
-### Seleção Inteligente de Engine
+### Seleção Automática de Engine (GUI)
 ```python
-# backup_gui.py - Escolha automática entre rsync e script Bash
+# backup_gui.py - Escolha entre rsync e engine Bash
 def execute_backup(self):
     if self.backup_type.get() == "arquivo":
-        # Usar rsync diretamente para arquivos
-        cmd = ['rsync', '-avh', '--progress', source, dest]
+        cmd = ["rsync", "-avh", "--progress", source, dest]
     else:
-        # Usar script Bash para pastas (maior controle)
-        cmd = ['./backup_engine.sh', source, dest]
-    
-    # Execução em thread separada
-    self.run_backup_thread(cmd)
+        cmd = ["./backup_engine.sh", source, dest]
+    self.run_backup_thread(cmd)  # Executa em thread separada
 ```
 
-### Sistema de Log Persistente
+### Logging Estruturado (Shell)
 ```bash
-# backup_engine.sh - Logging estruturado
+# backup_engine.sh - Registro persistente
 {
     echo "========================================="
     echo "BACKUP $(date '+%d/%m/%Y %H:%M:%S')"
@@ -195,9 +108,8 @@ def execute_backup(self):
 } >> "$LOG_FILE"
 ```
 
-### Threading para UI Responsiva
+### Threading para Interface Responsiva
 ```python
-# Execução assíncrona para não travar interface
 import threading
 
 def run_backup_thread(self, cmd):
@@ -206,63 +118,52 @@ def run_backup_thread(self, cmd):
     thread.start()
 ```
 
----
+## 💡 Desafios e Soluções (Troubleshooting)
 
-## 🔍 Conceitos Demonstrados
+**Desafio 1: Concorrência e Lock Files**
+- Problema: Execuções simultâneas corrompiam o estado do log e do destino.
+- Solução: Implementação de lock file na engine Bash para garantir execução única.
 
-### **DevOps e Automação**
-- Automação de backup crítico de sistema
-- Integração Python + Bash para máxima eficiência
-- Sistema de logging para auditoria e compliance
-- Proteção contra execução concorrente
+**Desafio 2: Interface Travando em Backups Grandes**
+- Problema: Operações longas bloqueavam a GUI.
+- Solução: Execução em thread separada e atualização do log por callbacks.
 
-### **Desenvolvimento de Interface**
-- GUI desktop profissional com Tkinter
-- Threading para operações assíncronas
-- Real-time feedback e progress tracking
-- User experience otimizada para operações técnicas
+**Desafio 3: Validação de Caminhos de Origem/Destino**
+- Problema: Usuários selecionavam destinos inválidos ou a própria origem.
+- Solução: Validação pré-execução na GUI e no shell com mensagens claras.
 
-### **System Administration**
-- Uso avançado de rsync para sincronização
-- Scripts Bash robustos com error handling
-- Gerenciamento de arquivos e permissões
-- Estratégias de backup para ambientes produtivos
+**Desafio 4: Persistência de Histórico Entre Sessões**
+- Problema: Log visual se perdia ao fechar a aplicação.
+- Solução: Histórico persistente em backup_history.log com recarga automática na abertura.
 
----
+## ⚡ Como Executar
 
-## 📈 Observações Técnicas
+### Preparação do Ambiente
+```bash
+git clone https://github.com/jonatas-pimenta/jonatas-portfolio.git
+cd devops/backup-manager
+python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+chmod +x backup_engine.sh
+```
 
-- **Histórico Contínuo:** O arquivo `backup_history.log` é criado automaticamente e mantém registro permanente
-- **Dual Engine:** Arquivos usam rsync direto; pastas usam script Bash para maior controle
-- **Proteção de Dados:** Log visual pode ser limpo, mas histórico em arquivo é preservado
-- **Threading Assíncrono:** Interface permanece responsiva durante operações longas
-- **Linux Exclusive:** Desenvolvido especificamente para sistemas Linux/Unix
+### Execução
+```bash
+python3 backup_gui.py
+```
 
----
+### Uso Rápido
+1. Escolha o tipo: Arquivo ou Pasta.
+2. Selecione origem e destino.
+3. Clique em "Run Backup" e acompanhe o log em tempo real.
+4. Consulte o histórico persistente em backup_history.log.
 
-## 💼 Valor para Recrutadores
-
-### Competências Demonstradas
-- **Python GUI Development** - Tkinter, threading, subprocess integration
-- **Bash Scripting Avançado** - rsync automation, error handling, logging
-- **DevOps Tools** - Backup automation, system administration
-- **System Integration** - Multi-language solution (Python + Bash)
-- **User Experience** - Intuitive interface for technical operations
-- **Error Handling** - Robust exception management and recovery
-
-### Aplicabilidade Profissional
-- **Backup Solutions** - Critical data protection strategies
-- **DevOps Automation** - Infrastructure maintenance tools
-- **System Administration** - Internal tools development
-- **GUI Applications** - Desktop interfaces for system tools
-- **Process Automation** - Workflow optimization and reliability
-
-### Casos de Uso Reais
-- Backup automatizado de servidores de desenvolvimento
-- Ferramentas internas de DevOps para teams
-- Interfaces gráficas para scripts administrativos
-- Sistema de auditoria e compliance para backups
-- Automation tools para rotinas de manutenção
+### Verificações (opcional)
+```bash
+python3 -c "import tkinter; print('Tkinter OK')"
+rsync --version
+bash --version
+```
 
 ---
 

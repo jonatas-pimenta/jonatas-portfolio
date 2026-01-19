@@ -1,146 +1,74 @@
-#  StockFlow – Fluxo Inteligente de Estoques "🐍+📦"
+# StockFlow – Gestão de Estoque com GUI e MongoDB
 
-<div align="center">
+Aplicação desktop em Python com interface Tkinter, banco NoSQL MongoDB e geração de relatórios via Pandas/Excel. Permite cadastro, consulta, movimentação e controle de estoque, com exportação e visão analítica para apoiar operação de pequenas empresas.
 
-![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-4.4%2B-green?logo=mongodb&logoColor=white)
-![Tkinter](https://img.shields.io/badge/Tkinter-GUI-FF6B35?style=flat&logo=python&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-Data_Analysis-150458?style=flat&logo=pandas&logoColor=white)
+## Arquitetura Implementada
 
-**StockFlow – Fluxo Inteligente de Estoques, com interface gráfica, integração MongoDB e geração de relatórios.**
-
-[🚀 Instalação](#-como-executar) • [💼 Funcionalidades](#-funcionalidades) • [🎯 Arquitetura](#-arquitetura-do-sistema) • [🤝 Contato](#-contato-e-portfólio)
-
-</div>
-
----
-
-## 📋 Descrição do Projeto
-
-O **StockFlow – Fluxo Inteligente de Estoques** é uma aplicação desktop desenvolvida em Python, com interface gráfica Tkinter e banco de dados MongoDB. Permite o cadastro, consulta, movimentação e controle de produtos, além da geração de relatórios detalhados e exportação para Excel.
-
-O projeto foi desenvolvido para facilitar a gestão de estoques em pequenas empresas, com foco em usabilidade, praticidade e integração de dados.
-
----
-
-## 🏗️ Arquitetura do Sistema
-
-```
-┌──────────────────────────────┐
-│        Interface GUI         │
-│         (Tkinter)            │
-├──────────────────────────────┤
-│  Cadastro e consulta         │
-│  Movimentação de estoque     │
-│  Geração de relatórios       │
-└─────────────┬────────────────┘
-              │
-              ▼
-┌──────────────────────────────┐
-│        Banco de Dados        │
-│          (MongoDB)           │
-├──────────────────────────────┤
-│  Coleção de produtos         │
-│  Histórico de movimentações  │
-└──────────────────────────────┘
-              │
-              ▼
-┌──────────────────────────────┐
-│      Relatórios/Exportação   │
-│         (Pandas, Excel)      │
-└──────────────────────────────┘
-```
-
----
-
-## 💼 Funcionalidades
-
-- **Cadastro de produtos** com campos essenciais (nome, tipo, quantidade, preço, etc)
-- **Consulta e busca** de produtos por nome, tipo ou código
-- **Movimentação de estoque** (entrada e saída)
-- **Histórico de movimentações** detalhado
-- **Geração de relatórios** filtrados por período, produto ou tipo
-- **Exportação para Excel** dos relatórios (usando Pandas/OpenPyXL)
-- **Interface gráfica intuitiva** com abas para cada funcionalidade
-
----
-
-## 📋 Pré-requisitos
-
-- **Python 3.12+**
-- **MongoDB 4.4+** (local ou remoto)
-- **Tkinter** (nativo do Python)
-- **Pandas** (`pip install pandas`)
-- **pymongo** (`pip install pymongo`)
-- **openpyxl** (`pip install openpyxl`) *(se exportar para Excel)*
-
----
-
-## 🚀 Como Executar
-
-Recomenda-se usar o script de execução fornecido (cuida de criar venv, instalar deps e iniciar o MongoDB quando possível).
-
-Torne o script executável (uma só vez):
-```bash
-cd /home/lion/Documentos/Projetos/jonatas-portfolio/dev/StockFlow
-chmod +x executar.sh
-```
-
-Execute o sistema:
-```bash
-./executar.sh
-```
-
-Observações:
-- O script cria/usa um virtualenv em ./venv e executa o arquivo main.py.
-- Se preferir, pode executar diretamente com o Python do venv:
-  ```bash
-  . ./venv/bin/activate
-  python3 main.py
-  ```
-- Se o MongoDB não estiver rodando localmente, inicie com:
-  ```bash
-  sudo systemctl start mongod
-  ```
-
-## 📸 Screenshots
-
-<!-- SCREENSHOTS-START -->
-<p align="center">
-  <img src="screenshots/relatorios.png" alt="Relatórios — estatísticas e produtos em situação crítica" width="70%"><br>
-  <em>Relatórios — estatísticas gerais e lista de produtos com estoque baixo</em>
-</p>
+Aplicação monolítica desktop com GUI em Tkinter, camada de dados em MongoDB e camada de relatórios em Pandas/Excel.
 
 <p align="center">
-  <img src="screenshots/produtos.png" alt="Produtos — cadastro e lista de produtos" width="70%"><br>
-  <em>Produtos — formulário de cadastro/edição e lista de produtos</em>
+  <img src="screenshots/relatorios.png" width="70%" alt="Relatórios do StockFlow">
 </p>
 
-<p align="center">
-  <img src="screenshots/movimentacao.png" alt="Movimentações — registrar e histórico de movimentações" width="70%"><br>
-  <em>Movimentações — registrar entrada/saída e histórico</em>
-</p>
-<!-- SCREENSHOTS-END -->
+| Componente | Detalhe Técnico | Função Principal |
+| :--- | :--- | :--- |
+| **GUI Desktop** | Python 3.12 + Tkinter | Cadastro, consultas, movimentações, filtros |
+| **Banco de Dados** | MongoDB 4.4+ (coleções produtos/movimentacoes) | Persistência de estoque e histórico |
+| **Relatórios** | Pandas + OpenPyXL | Geração e exportação para Excel |
+| **Scripts de Execução** | executar.sh + venv | Criação de ambiente e bootstrap da aplicação |
 
----
+## Principais Funcionalidades
 
+**Cadastro e Consulta**
+- CRUD de produtos (nome, tipo, quantidade, preço, etc.)
+- Busca por nome, tipo ou código
+
+**Movimentação de Estoque**
+- Registro de entradas e saídas
+- Histórico detalhado de movimentações
+
+**Relatórios e Exportação**
+- Relatórios filtrados por período, produto ou tipo
+- Exportação para Excel (Pandas/OpenPyXL)
+- Visão de produtos críticos (estoque baixo)
+
+**Interface e Usabilidade**
+- GUI em abas separando produtos, movimentações e relatórios
+- Feedback visual e formulários simples
+
+## Aplicação Profissional / Valor para Empresas
+
+- Reduz esforço manual no controle de estoque e minimiza erros
+- Centraliza dados em MongoDB, facilitando integrações futuras
+- Geração rápida de relatórios para tomada de decisão e auditoria
+- Exportação para Excel para compartilhamento com áreas de negócio
+
+## Competências Técnicas Demonstradas
+
+- **Python Desktop (Tkinter):** Construção de GUI em abas e formulários
+- **MongoDB (pymongo):** Persistência NoSQL para produtos e movimentações
+- **Pandas/OpenPyXL:** Relatórios e exportação para Excel
+- **Estruturação de Projeto:** Separação de camadas (GUI, dados, execução)
+- **Automação de Ambiente:** Script executar.sh com venv e dependências
 
 ## 📁 Estrutura do Projeto
 
-```text
-StockFlow/
-├── main.py             # Arquivo principal da interface
-├── db.py               # Módulo de integração com MongoDB
-├── executar.sh         # Script para criar/ativar venv e iniciar o app
-├── requirements.txt    # Dependências do projeto
-├── .gitignore          # Arquivos/pastas ignorados no git
-└── __pycache__/        # Cache do Python (não versionado)
 ```
----
+StockFlow/
+├── main.py             # Interface e fluxo principal
+├── db.py               # Integração com MongoDB
+├── executar.sh         # Criação/ativação de venv e execução
+├── requirements.txt    # Dependências Python
+├── screenshots/
+│   ├── relatorios.png
+│   ├── produtos.png
+│   └── movimentacao.png
+└── README.md
+```
 
 ## 🔧 Demonstração Técnica
 
-### Exemplo de integração com MongoDB
+### Integração com MongoDB
 ```python
 from pymongo import MongoClient
 
@@ -156,34 +84,56 @@ for produto in produtos.find({"nome": "Vinho Tinto"}):
     print(produto)
 ```
 
-### Exportação de relatório para Excel
+### Exportação de Relatório para Excel
 ```python
 import pandas as pd
 
+# Exemplo de dados previamente carregados do Mongo
 dados = list(produtos.find())
 df = pd.DataFrame(dados)
 df.to_excel("relatorio_estoque.xlsx", index=False)
 ```
 
----
+## ⚡ Como Executar
 
-## 🔍 Conceitos Demonstrados
+```bash
+cd /home/lion/Documentos/Projetos/jonatas-portfolio/dev/StockFlow
+chmod +x executar.sh
+./executar.sh
+```
 
-- **Integração Python + MongoDB** para armazenamento flexível de dados
-- **Desenvolvimento de GUI** com Tkinter
-- **Manipulação de dados** e geração de relatórios com Pandas
-- **Exportação para Excel** com OpenPyXL
-- **Boas práticas de organização de código e versionamento**
+Notas:
+- O script cria/usa venv em ./venv e executa main.py.
+- Se necessário, ative manualmente: `. ./venv/bin/activate && python3 main.py`.
+- Se o MongoDB não estiver rodando localmente: `sudo systemctl start mongod`.
 
----
+## 💡 Desafios e Soluções (Troubleshooting)
 
-## 💼 Valor para Recrutadores
+**Desafio 1: MongoDB não iniciado**
+- Solução: iniciar serviço (`sudo systemctl start mongod`) ou apontar para instância remota.
 
-- **Automação de processos de estoque**
-- **Integração de banco de dados NoSQL**
-- **Desenvolvimento de aplicações desktop**
-- **Geração de relatórios e exportação de dados**
-- **Organização e documentação profissional**
+**Desafio 2: Dependências não instaladas**
+- Solução: executar `./executar.sh` ou `pip install -r requirements.txt` dentro do venv.
+
+**Desafio 3: Exportação para Excel falhando**
+- Solução: garantir `openpyxl` instalado (já listado em requirements).
+
+## 📸 Screenshots
+
+<p align="center">
+  <img src="screenshots/relatorios.png" alt="Relatórios" width="70%"><br>
+  <em>Relatórios — estatísticas gerais e produtos críticos</em>
+</p>
+
+<p align="center">
+  <img src="screenshots/produtos.png" alt="Produtos" width="70%"><br>
+  <em>Produtos — cadastro/edição e lista</em>
+</p>
+
+<p align="center">
+  <img src="screenshots/movimentacao.png" alt="Movimentações" width="70%"><br>
+  <em>Movimentações — entrada/saída e histórico</em>
+</p>
 
 ---
 

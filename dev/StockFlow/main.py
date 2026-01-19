@@ -28,7 +28,7 @@ class EstoqueGUI:
         
         # Cria a janela principal
         self.root = tk.Tk()
-        self.root.title("Sistema de Gestão de Adega - MongoDB")
+        self.root.title("StockFlow – Fluxo Inteligente de Estoques")
         self.root.geometry("1200x800")
         self.root.configure(bg='#f0f0f0')
         
