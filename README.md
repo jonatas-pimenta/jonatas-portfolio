@@ -26,6 +26,7 @@ Abaixo está a lista de projetos organizados por categoria.
 - [laboratorio-ansible](./devops/laboratorio-ansible) – Automação de provisionamento de servidores Linux com Ansible (IaC).
 
 ### Infraestrutura & Redes
+- [cisco-enterprise-network-L2-L3](./Infraestrutura/cisco-enterprise-network-L2-L3) – Infraestrutura Enterprise com Roteamento Inter-VLAN e Segurança L2 (ISR 4331, Catalyst Switches, Port-Security, Portfast, BPDU Guard) 
 - [laboratorio-bgp-inter-as](./Infraestrutura/laboratorio-bgp-inter-as) – Simulação de roteamento BGP entre múltiplos Sistemas Autônomos (Cisco).
 - [network-lab-corporativo](./Infraestrutura/network-lab-corporativo) – Rede corporativa segmentada com VLANs, ACLs e DHCP Relay (Cisco).
 - [windows-server-azure-lab](./Infraestrutura/windows-server-azure-lab) – Infraestrutura IaaS completa no Microsoft Azure (AD, DNS, DHCP).
@@ -40,7 +41,7 @@ Abaixo está a lista de projetos organizados por categoria.
 
 ## 🎯 Projeto em Destaque
 
-#### Windows Server Azure Lab — Infraestrutura Híbrida no Azure
+### Windows Server Azure Lab — Infraestrutura Híbrida no Azure
 Provisionamento de uma infraestrutura corporativa completa (IaaS) no Microsoft Azure, simulando um ambiente de TI híbrido com serviços core da Microsoft.
 
 - **Tecnologias**: Microsoft Azure (IaaS, VNets, NSGs), Windows Server 2019, Active Directory, DNS, DHCP, File Server (NTFS), PowerShell.
