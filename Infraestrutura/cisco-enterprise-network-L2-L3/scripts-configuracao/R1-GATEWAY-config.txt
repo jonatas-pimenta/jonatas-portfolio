@@ -1,0 +1,51 @@
+! #############################################################
+! PROJETO: INFRAESTRUTURA DE REDE CORPORATIVA ENTERPRISE
+! DISPOSITIVO: R1-GATEWAY (Cisco ISR 4331)
+! FUNCAO: Roteamento Inter-VLAN (Router-on-a-Stick)
+! #############################################################
+
+enable
+configure terminal
+
+! --- Ajustes Globais de Gerenciamento ---
+enable
+configure terminal
+hostname R1-GATEWAY
+ip routing
+line console 0
+logging synchronous
+
+! --- Ativacao da Interface Fisica Principal ---
+interface GigabitEthernet0/0/0
+ description Link Trunk para o SW-CORE
+ no ip address
+ duplex auto
+ speed auto
+ no shutdown
+exit
+
+! --- Configuracao da VLAN 10 (PRODUCAO) ---
+interface GigabitEthernet0/0/0.10
+ description Gateway VLAN PRODUCAO
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+exit
+
+! --- Configuracao da VLAN 20 (ADMINISTRACAO) ---
+interface GigabitEthernet0/0/0.20
+ description Gateway VLAN ADMINISTRACAO
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+exit
+
+! --- Configuracao da VLAN 99 (GERENCIA/NATIVA) ---
+! Nota: Definida como Native para bater com a configuracao dos Switches
+interface GigabitEthernet0/0/0.99
+ description Gateway VLAN GERENCIA
+ encapsulation dot1Q 99 native
+ ip address 192.168.99.254 255.255.255.0
+exit
+
+! --- Salvar Configuracoes ---
+end
+copy running-config startup-config

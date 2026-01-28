@@ -1,0 +1,48 @@
+! #############################################################
+! PROJETO: INFRAESTRUTURA DE REDE CORPORATIVA ENTERPRISE
+! ARQUIVO: SECURITY-HARDENING.txt
+! DESCRICAO: Padronizacao de Acesso, Senhas e Banner MOTD
+! #############################################################
+
+enable
+configure terminal
+
+! --- 1. SEGURANCA DE ACESSO FISICO (Console) ---
+! Esta e a primeira senha pedida ao plugar o cabo azul no switch/router
+line console 0
+ password cisco123
+ login
+ logging synchronous
+exit
+
+! --- 2. SEGURANCA DE MODO PRIVILEGIADO (Enable) ---
+! Senha pedida quando voce digita o comando 'enable'
+enable secret cisco456
+
+! --- 3. SEGURANCA DE ACESSO REMOTO (VTY/SSH) ---
+! Senha para quando voce acessa o equipamento via rede (Telnet/SSH)
+line vty 0 15
+ password cisco123
+ login
+ logging synchronous
+exit
+
+! --- 4. USUARIO ADMINISTRADOR LOCAL ---
+! Cria um usuario reserva com poderes totais (Privilegio 15)
+username admin privilege 15 secret cisco789
+
+! --- 5. CRIPTOGRAFIA E AVISO LEGAL ---
+! Criptografa senhas simples no arquivo de configuracao
+service password-encryption
+
+! Mensagem exibida antes de qualquer tentativa de login
+banner motd #
+*****************************************************************
+* AVISO: ACESSO RESTRITO AOS ADMINISTRADORES DE REDE DA EMPRESA *
+* QUALQUER TENTATIVA DE ACESSO NAO AUTORIZADO SERA MONITORADA   *
+* E OS LOGS SERAO ENCAMINHADOS PARA ANALISE DE SEGURANCA.      *
+*****************************************************************
+#
+
+end
+write memory

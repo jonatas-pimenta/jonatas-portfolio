@@ -1,0 +1,59 @@
+! #############################################################
+! PROJETO: INFRAESTRUTURA DE REDE CORPORATIVA ENTERPRISE
+! DISPOSITIVO: SW-PRODUCAO (Cisco Catalyst 2960)
+! FUNCAO: Switch de Acesso - Departamento Producao
+! #############################################################
+
+
+
+! --- Ajustes Globais ---
+enable
+configure terminal
+hostname SW-PRODUCAO
+vtp mode transparent
+line console 0
+logging synchronous
+exit
+
+! --- Criacao das VLANs no Banco de Dados ---
+vlan 10
+ name PRODUCAO
+exit
+vlan 99
+ name GERENCIA_NATIVA
+exit
+
+! --- Configuracao do Link Uplink (Conexao com o CORE) ---
+interface GigabitEthernet0/1
+ description Uplink para o SW-CORE
+ switchport mode trunk
+ ! Seguranca: Removendo VLAN 1 e definindo a 99 como Nativa
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,99
+ switchport nonegotiate
+exit
+
+! --- Configuracao da Porta de Acesso (PC0) ---
+interface FastEthernet0/1
+ description Conexao PC0 - Departamento Producao
+ switchport mode access
+ switchport access vlan 10
+
+ ! --- Hardening, Seguranca e STP ---
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security violation shutdown
+ switchport port-security mac-address sticky
+ 
+ ! Protecao contra loops e aceleracao de convergencia
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+exit
+
+! --- Desativando Portas Ociosas (Segurança Ativa) ---
+interface range FastEthernet0/2 - 24, GigabitEthernet0/2
+ shutdown
+exit
+
+end
+copy running-config startup-config

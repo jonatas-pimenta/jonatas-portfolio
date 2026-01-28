@@ -1,0 +1,25 @@
+! #############################################################
+! PROJETO: INFRAESTRUTURA DE REDE CORPORATIVA ENTERPRISE
+! DISPOSITIVO: END-DEVICES (PCs e Estacoes de Trabalho)
+! FUNCAO: Padronizacao de Enderecamento Estatico
+! #############################################################
+
+! --- PC0 (DEPARTAMENTO PRODUCAO) ---
+! Localizacao: Setor Industrial
+! Conexao: SW-PRODUCAO (Porta FastEthernet 0/1)
+IP Address:      192.168.10.10
+Subnet Mask:     255.255.255.0
+Default Gateway: 192.168.10.1
+
+! --- PC1 (DEPARTAMENTO ADMINISTRACAO) ---
+! Localizacao: Escritorio Central
+! Conexao: SW-ADMIN (Porta FastEthernet 0/1)
+IP Address:      192.168.20.10
+Subnet Mask:     255.255.255.0
+Default Gateway: 192.168.20.1
+
+! --- TESTES DE VALIDACAO ---
+1. Abrir terminal (CMD)
+2. Comando: ping 192.168.10.1 (Testar Gateway Local)
+3. Comando: ping 192.168.20.1 (Testar Gateway Remoto)
+4. Comando: ping 192.168.20.10 (Testar Comunicacao Inter-VLAN)

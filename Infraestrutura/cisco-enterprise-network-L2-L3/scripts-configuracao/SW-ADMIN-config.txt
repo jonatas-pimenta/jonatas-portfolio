@@ -1,0 +1,59 @@
+! #############################################################
+! PROJETO: REDE CORPORATIVA ENTERPRISE
+! DISPOSITIVO: SW-ADMIN (Cisco Catalyst 2960)
+! FUNCAO: Switch de Acesso - Departamento Administracao
+! #############################################################
+
+
+
+! --- Ajustes Globais ---
+enable
+configure terminal
+hostname SW-ADMIN
+vtp mode transparent
+line console 0
+logging synchronous
+exit
+
+! --- Criacao da VLAN no Banco de Dados ---
+vlan 20
+ name ADMIN
+exit
+vlan 99
+ name GERENCIA_NATIVA
+exit
+
+! --- Configuracao do Link Uplink (Conexao com o CORE) ---
+interface GigabitEthernet0/1
+ description Uplink para o SW-CORE
+ switchport mode trunk
+ ! Removida VLAN 1 por seguranca e adicionada a 99 como Nativa
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 20,99
+ switchport nonegotiate
+exit
+
+! --- Configuracao das Portas de Acesso (Usuarios) ---
+interface FastEthernet0/1
+ description Conexao PC1 - Departamento Admin
+ switchport mode access
+ switchport access vlan 20
+ 
+ ! --- Seguranca de Camada 2 e STP ---
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security violation shutdown
+ switchport port-security mac-address sticky
+ 
+ ! Protecao contra loops e aceleracao de porta
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+exit
+
+! --- Desativando portas nao utilizadas (Seguranca Ativa) ---
+interface range FastEthernet0/2 - 24, GigabitEthernet0/2
+ shutdown
+exit
+
+end
+copy running-config startup-config
