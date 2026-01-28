@@ -33,7 +33,24 @@ Configuração de Hardening nos switches de acesso para impedir conexões não a
     * ![Port Security](evidencias/03-ACCESS-Security-VLAN.png)
     * *Evidência da porta Fa0/1 em modo `Secure-up` e outras interfaces desativadas.*
 
-### 4. Teste de Conectividade Final (Ping)
+### 4. Hardening e Segurança de Acesso (Senhas, Banner e Logging)
+Implementação de múltiplas camadas de segurança nos dispositivos para proteger contra acesso não autorizado e melhorar a auditoria operacional.
+* **Configuração de Segurança:** [config-seguranca-e-acesso.txt](./scripts-configuracao/config-seguranca-e-acesso.txt)
+* **Componentes Implementados:**
+    * **Console Password (Nível 1):** Primeira senha solicitada ao conectar fisicamente no console
+    * **Enable Secret (Nível 2):** Senha para modo privilegiado (comando `enable`)
+    * **VTY Password (Nível 3):** Senha para acesso remoto (Telnet/SSH)
+    * **Usuário Administrador Local:** Usuário `admin` com privilégio 15 e senha própria
+    * **Service Password Encryption:** Criptografia de senhas simples no arquivo de configuração
+    * **Banner MOTD:** Aviso legal exibido antes do login, documentando as restrições de acesso
+    * **Logging Synchronous:** Reorganização automática de prompts quando logs são exibidos
+* **Benefícios de Segurança:**
+    * Proteção contra acesso físico não autorizado via console
+    * Prevenção de escalação de privilégio
+    * Auditoria de tentativas de acesso
+    * Conformidade com políticas de segurança corporativa (LGPD, ISO 27001)
+
+### 5. Teste de Conectividade Final (Ping)
 Validação de que um host na VLAN 10 (Produção) alcança um host na VLAN 20 (Admin).
 * **Documentação de Hosts:** [HOSTS-config.txt](./scripts-configuracao/HOSTS-config.txt)
 * **Comprovação técnica:**
