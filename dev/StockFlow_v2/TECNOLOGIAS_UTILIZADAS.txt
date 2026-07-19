@@ -1,0 +1,1441 @@
+================================================================================
+STOCKFLOW - FLUXO DE ESTOQUE COM CRIPTOGRAFIA E BACKUP EM NUVEM
+================================================================================
+DOCUMENTO TÉCNICO: TODAS AS TECNOLOGIAS UTILIZADAS
+Versão: 2.0
+Data: 03 de junho de 2026
+================================================================================
+
+Este documento descreve cada tecnologia utilizada no projeto StockFlow,
+sua função no sistema, como funciona, e por que foi escolhida em detrimento
+de alternativas ou quando não foi utilizado apenas uma solução.
+
+================================================================================
+1. LINGUAGEM DE PROGRAMAÇÃO: PYTHON 3.12
+================================================================================
+
+O QUÊ É:
+Python é uma linguagem de programação interpretada, de alto nível, dinâmica e
+multiplataforma. Foi criada em 1989 por Guido van Rossum.
+
+PARA QUE ESTÁ USANDO:
+- Desenvolvimento da lógica principal da aplicação
+- Interface gráfica com Tkinter
+- Scripts de backup e processamento de dados
+- Lógica de negócio (CRUD de produtos, movimentações, usuários)
+
+COMO FUNCIONA AQUI:
+O projeto é um aplicativo monolítico desktop. Python interpreta o código
+durante a execução, permitindo desenvolvimento rápido sem necessidade de
+compilação. Todos os arquivos .py são scripts Python que são executados pelo
+interpretador Python 3.12.
+
+POR QUE ESCOLHEMOS:
+1. Curva de aprendizado baixa - fácil para novos desenvolvedores
+2. Biblioteca padrão ampla (sqlite3, datetime, json, logging)
+3. Multiplataforma - funciona em Linux, Windows, macOS
+4. Ecossistema rico de bibliotecas de terceiros (pandas, cryptography, etc)
+5. Gratuita e open source - sem custos de licença
+6. Documentação oficial e comunidade grande
+7. Excelente para prototipagem rápida
+8. Suporta programação procedural, orientada a objetos e funcional
+
+================================================================================
+2. INTERFACE GRÁFICA: TKINTER
+================================================================================
+
+O QUÊ É:
+Tkinter é a biblioteca padrão do Python para criar interfaces gráficas desktop.
+É um binding (ligação) para a biblioteca Tk, de código aberto.
+
+PARA QUE ESTÁ USANDO:
+- Criar janelas, botões, campos de texto, tabelas, menus
+- Exibir formulários de login, cadastro de produtos, movimentações
+- Renderizar 7 abas principais: Produtos, Movimentações, Fornecedores,
+  Clientes, Relatórios, Gerenciar Usuários, Configurações de Backup
+
+COMO FUNCIONA AQUI:
+No StockFlow, Tkinter cria uma janela raiz (root window) que contém:
+- Frames (painéis) para organizar componentes
+- ttk.Notebook para criar as 7 abas
+- ttk.Treeview para exibir listas de produtos, movimentações, etc
+- ttk.Entry para campos de texto
+- ttk.Button para botões
+- ttk.Label para rótulos
+- Caixas de diálogo (messagebox) para confirmações
+
+Exemplo de fluxo:
+1. Usuário clica em "Nova Movimentação"
+2. Tkinter abre uma janela modal
+3. Usuário preenche os campos
+4. Ao clicar "Salvar", Tkinter captura os valores dos campos
+5. Passa para o backend (database.py)
+6. Atualiza a árvore visualmente
+
+POR QUE ESCOLHEMOS TKINTER:
+1. Viene nativamente com Python - não precisa instalar nada extra
+2. Simples de aprender - perfeito para pequenos aplicativos
+3. Leve - baixo uso de memória e CPU
+4. Portável - mesmo código funciona em Linux, Windows, macOS
+5. Bibliotecas modernas (PyQt5, PyQt6, PySide) são muito mais pesadas
+6. Para um sistema de estoque simples não precisa de complexidade de Qt
+
+POR QUE NÃO USAMOS ALTERNATIVAS:
+- PyQt5/PyQt6: Muito pesadas, mais recursos, curva de aprendizado maior, comercial
+- Web (Flask + HTML/CSS): Exigiria servidor web, mais complexo, não roda offline tão bem
+- WxPython: Menos documentação, comunidade menor que Tkinter
+
+================================================================================
+3. BANCO DE DADOS: SQLITE 3
+================================================================================
+
+O QUÊ É:
+SQLite é um sistema de gerenciamento de banco de dados relacional embarcado.
+Armazena dados em um único arquivo (.db) sem necessidade de servidor separado.
+É o SGBD mais utilizado do mundo.
+
+PARA QUE ESTÁ USANDO:
+- Armazenar dados de produtos, movimentações, usuários, fornecedores, clientes
+- Manter histórico de operações
+- Garantir integridade referencial entre tabelas
+
+COMO FUNCIONA AQUI:
+O arquivo "estoque.db" está no diretório raiz do projeto. Quando a aplicação
+inicia, a classe EstoqueDB (em backend/database.py) conecta ao SQLite:
+
+```
+self.conexao = sqlite3.connect("estoque.db")
+self.conexao.execute("PRAGMA foreign_keys = ON")
+```
+
+Isso cria o arquivo se não existir e ativa integridade referencial (FK).
+
+TABELAS CRIADAS:
+1. usuarios: username, senha_hash (bcrypt), perfil (ADM/gerente/operador), ativo
+2. produtos: nome, categoria, preço, quantidade, estoque_mínimo, fornecedor, data
+3. movimentacoes: produto_id, tipo (entrada/saída), quantidade, data, usuário
+4. fornecedores: nome, telefone, email, endereço, data_cadastro
+5. clientes: nome, telefone, email, endereço, data_cadastro
+
+SCHEMA EXEMPLO (usuarios):
+┌─────────┬──────────────┬──────────────────────┬────────────┬────────┐
+│ id (PK) │ username (U) │ senha_hash           │ perfil     │ ativo  │
+├─────────┼──────────────┼──────────────────────┼────────────┼────────┤
+│ 1       │ ADM          │ $2b$12$K1q2wX...    │ ADM        │ 1      │
+│ 2       │ Gerente      │ $2b$12$M3r4zY...    │ gerente    │ 1      │
+│ 3       │ Operador1    │ $2b$12$N5s6aB...    │ operador   │ 1      │
+└─────────┴──────────────┴──────────────────────┴────────────┴────────┘
+
+POR QUE ESCOLHEMOS SQLITE:
+1. Sem servidor - não precisa de MySQL, PostgreSQL rodando
+2. Portável - o arquivo .db é copiado/compartilhado facilmente
+3. Zero configuração - funciona imediatamente
+4. Ideal para aplicações desktop e mobile
+5. Suporta transações ACID - garante consistência
+6. Suporta integridade referencial (PRAGMA foreign_keys)
+7. Gratuito e open source
+8. Mais de 300 bilhões de bancos SQLite em uso no mundo
+
+POR QUE NÃO USAMOS ALTERNATIVAS:
+- MySQL: Requer servidor instalado, mais complexo, overhead para aplicação local
+- PostgreSQL: Muito pesado para pequenas empresas, exige administrador
+- MongoDB: NoSQL, sem integridade referencial nativa, overhead desnecessário
+
+================================================================================
+4. SEGURANÇA - HASHING DE SENHAS: BCRYPT
+================================================================================
+
+O QUÊ É:
+Bcrypt é um algoritmo de hash de senhas adaptativo baseado em Blowfish.
+Implementa "adaptive hashing" - fica mais lento com hardware mais rápido.
+
+PARA QUE ESTÁ USANDO:
+- Hash seguro das senhas dos usuários lors do cadastro
+- Verificação de senha no login sem nunca armazenar a senha original
+- Proteção contra força bruta e rainbow tables
+
+COMO FUNCIONA AQUI:
+
+CADASTRO DE USUÁRIO:
+Senha original: "minhasenha123"
+                    ↓
+         bcrypt.hashpw()
+                    ↓
+Hash gerado: "$2b$12$K1q2wXyZ.vAbCdEf1234567890abcdefghijklmnop"
+                    ↓
+Armazenado no banco: senha_hash = "$2b$12$K1q2wXyZ.vAbCdEf..."
+
+LOGIN:
+Usuário digita: "minhasenha123"
+                    ↓
+         bcrypt.checkpw(senha_digitada, hash_armazenado)
+                    ↓
+Retorna: True (igual) ou False (diferente)
+
+CÓDIGO NO PROJETO:
+```python
+# Cadastro
+import bcrypt
+senha_hash = bcrypt.hashpw(senha.encode('utf-8'), bcrypt.gensalt())
+self.conexao.execute("INSERT INTO usuarios (senha_hash) VALUES (?)", (senha_hash,))
+
+# Login
+senha_hash_armazenada = self.conexao.execute(
+    "SELECT senha_hash FROM usuarios WHERE username = ?", (username,)
+).fetchone()
+if bcrypt.checkpw(senha.encode('utf-8'), senha_hash_armazenada):
+    print("Login bem-sucedido")
+```
+
+POR QUE ESCOLHEMOS BCRYPT:
+1. Não é reversível - impossível recuperar a senha original do hash
+2. Força bruta é cara computacionalmente - tem "fator de trabalho"
+3. Proteção contra rainbow tables através de salt aleatório
+4. Recomendado por OWASP (Open Web Application Security Project)
+5. Padrão de ouro na indústria há 20+ anos
+6. Implementação de biblioteca "bcrypt" é simples e confiável
+
+POR QUE DUAS FUNÇÕES E NÃO USAR SÓ UM HASH SIMPLES (MD5/SHA1):
+- MD5/SHA1 são RÁPIDOS demais - permitem bilhões de tentativas por segundo
+- Um atacante pode testar senha "123456" contra 10 bilhões de hashes por segundo
+- Bcrypt há fator de trabalho 2^12 (4096) iterações mínimas
+- Aumenta em factor de ~1000x o tempo de cada tentativa
+- 10 bilhões de tentativas MD5 = 10 segundos
+- 10 bilhões de tentativas Bcrypt = ~116 dias
+- Por isso MD5/SHA1 nunca devem ser usados para senhas
+
+POR QUE NÃO USAMOS ALTERNATIVAS:
+- scrypt: Similar a Bcrypt mas menos popular, maior consumo de memória
+- Argon2: Mais moderno mas menos documentado, overkill para projeto pequeno
+- PBKDF2: Antigo, menos seguro que Bcrypt atualmente
+
+================================================================================
+5. CRIPTOGRAFIA - ENVELOPE HÍBRIDO: RSA + AES-256-GCM
+================================================================================
+
+Este é o ponto mais crítico. Por que DUAS criptografias e não apenas uma?
+
+================================================================================
+5.1 - AES-256-GCM (Criptografia Simétrica)
+================================================================================
+
+O QUÊ É:
+AES (Advanced Encryption Standard) é um algoritmo de criptografia simétrica.
+"256" significa chave de 256 bits. "GCM" (Galois/Counter Mode) adiciona
+autenticação do payload.
+
+PARA QUE ESTÁ USANDO:
+- Criptografar o conteúdo do banco de dados para backup
+- Proteger a confidencialidade dos dados
+
+COMO FUNCIONA:
+
+BACKUP (Criptografia):
+Arquivo estoque.db (50MB)
+         ↓
+  [Gerar chave AES aleatória de 256 bits]
+  [Gerar nonce aleatório de 96 bits]
+         ↓
+  AES-256-GCM.encrypt(plaintext, nonce, chave)
+         ↓
+  Resultado: ciphertext (enviado para JSON)
+         ↓
+  Arquivo armazenado: estoque_backup_20260603_120000.enc.json
+
+RESTORE (Descriptografia):
+estoque_backup_20260603_120000.enc.json
+         ↓
+  [Ler ciphertext e nonce do JSON]
+  [Descriptografar com chave -> precisa ter a chave!]
+         ↓
+  AES-256-GCM.decrypt(ciphertext, nonce, chave)
+         ↓
+  Resultado: plaintext (banco original)
+
+VERIFICAÇÃO DE INTEGRIDADE:
+GCM não só criptografa, mas também autentica. Se alguém modificar 1 bit
+do ciphertext, o GCM detecta e rejeita.
+
+```python
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+aes_key = os.urandom(32)  # 256 bits
+nonce = os.urandom(12)    # 96 bits
+aesgcm = AESGCM(aes_key)
+
+# Encriptar
+ciphertext = aesgcm.encrypt(nonce, plaintext, associated_data=None)
+
+# Decriptar
+plaintext = aesgcm.decrypt(nonce, ciphertext, associated_data=None)
+```
+
+POR QUE AES-256 E NÃO 128 OU 192:
+- AES-128: 2^128 combinações possíveis (recomendado para 2030+)
+- AES-192: 2^192 combinações possíveis
+- AES-256: 2^256 combinações possíveis (recomendado para além de 2030)
+- A diferença de performance entre 128, 192 e 256 é negligenciável em hardware moderno
+- Por segurança futura, 256 é o padrão recomendado
+- NIST recomenda AES-256 para dados altamente classificados
+
+POR QUE GCM E NÃO CBC/ECB:
+- ECB: "Eletronic Code Book" - NÃO SEGURO, padrões visíveis no ciphertext
+- CBC: "Cipher Block Chaining" - seguro mas não autentica
+- GCM: "Galois/Counter Mode" - seguro, rápido e autentica tudo
+- GCM detecta modificações não autorizadas do ciphertext
+
+================================================================================
+5.2 - RSA-OAEP-SHA256 (Criptografia Assimétrica)
+================================================================================
+
+O QUÊ É:
+RSA é um algoritmo de criptografia assimétrica usando chaves públicas/privadas.
+"OAEP" (Optimal Asymmetric Encryption Padding) é um modo seguro de uso.
+"SHA256" é o hash usado no padding.
+
+PARA QUE ESTÁ USANDO:
+- Proteger a chave AES simetrica
+- Permitir que a chave AES seja armazenada de forma segura sem a chave privada
+
+COMO FUNCIONA:
+
+SETUP (Gera par de chaves):
+```
+openssl genrsa -out private_key.pem 2048
+openssl rsa -in private_key.pem -pubout -out public_key.pem
+```
+
+Resultado:
+private_key.pem (SECRETO, nunca compartilhar!!!)
+public_key.pem (pode ser compartilhado públicamente)
+
+BACKUP (Proteger a chave AES):
+1. Gerar chave AES-256 aleatória (256 bits)
+   → aes_key = os.urandom(32)
+
+2. Encriptar conteúdo com AES
+   → ciphertext = AESGCM(aes_key).encrypt(...)
+
+3. Proteger a chave AES com RSA público
+   → wrapped_key = public_key.encrypt(aes_key, OAEP...)
+
+4. Armazenar em JSON:
+   {
+     "wrapped_aes_key_b64": "MIIBIjANB...(wrapped_key em base64)",
+     "ciphertext_b64": "aGVsbG8gd29ybGQ=...",
+     "nonce_b64": "abc123xyz..."
+   }
+
+RESTORE (Desproteger a chave AES):
+1. Ler JSON com wrapped_key
+   → wrapped_key_b64 = envelope["wrapped_aes_key_b64"]
+
+2. Descriptografar com RSA privado (passphrase protegida)
+   → private_key = carrega private_key.pem
+   → aes_key = private_key.decrypt(wrapped_key, OAEP...)
+
+3. Usar aes_key para descriptografar o ciphertext
+   → plaintext = AESGCM(aes_key).decrypt(...)
+
+```python
+from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives import hashes
+
+# Encriptar (apenas com chave pública)
+wrapped_key = public_key.encrypt(
+    aes_key,
+    padding.OAEP(
+        mgf=padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label=None,
+    ),
+)
+
+# Decriptar (apenas com chave privada)
+aes_key = private_key.decrypt(
+    wrapped_key,
+    padding.OAEP(
+        mgf=padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label=None,
+    ),
+)
+```
+
+================================================================================
+5.3 - POR QUE USAMOS AMBAS (RSA + AES) E NÃO APENAS UMA?
+================================================================================
+
+Esta é a questão crítica que o usuário perguntou.
+
+OPÇÃO 1: Usar apenas AES-256-GCM
+
+Vantagens:
+- Mais simples
+- Um pouco mais rápido
+
+Desvantagens:
+❌ A chave AES também precisa ser armazenada em algum lugar
+❌ Se armazenarmos a chave AES junto com os dados criptografados, um atacante
+   tem acesso a ambos - sem segurança!
+❌ A chave AES teria que estar hardcoded no código fonte - péssimo!
+❌ Não há "master key" para desencriptar backups se necessário
+
+OPÇÃO 2: Usar apenas RSA
+
+Vantagens:
+- Poderia armazenar dados diretamente com RSA
+
+Desvantagens:
+❌ RSA é muito mais lento para dados grandes
+   - Para um backup de 50MB: levaria minutos para encriptar
+   - AES é milhares de vezes mais rápido
+❌ Tamanho de chave RSA para 256 bits de segurança = 2048 bits
+   - Encriptando 50MB com RSA geraria arquivo gigantesco
+❌ RSA não foi projetado para grandes volumes de dados
+
+OPÇÃO 3: RSA + AES (O QUE FAZEMOS) ✓
+
+Vantagens:
+✓ AES criptografa os 50MB rapidamente
+✓ Chave AES é gerada aleatória a cada backup
+✓ Chave AES é protegida com RSA (chave pública)
+✓ Se a chave privada RSA estiver offline, dados estão protegidos
+✓ Mesmo que alguém roube o arquivo .enc.json, não consegue descriptografar
+  sem a chave privada RSA
+✓ Performance: segundos de encriptação vs minutos com RSA puro
+
+FLUXO COMPLETO - POR QUE AMBAS:
+
+Cenário de Segurança:
+Um atacante invade o servidor/nuvem e consegue:
+- Arquivo de backup: estoque_backup_20260603_120000.enc.json ✓
+
+Com apenas AES (sem RSA):
+"Achei um arquivo .enc.json"
+"Mas preciso da chave AES..."
+"Achei! Está escrita no banco de dados também" ❌ SEM PROTEÇÃO
+→ Atacante descriptografa tudo facilmente
+
+Com apenas RSA:
+"Preciso criptografar 50MB com RSA"
+"Demoraria 10 minutos..." ❌ MUITO LENTO
+"E o arquivo ocuparia 500GB!" ❌ IMPRATICÁVEL
+
+Com RSA + AES (O QUE FAZEMOS):
+"Achei um arquivo .enc.json"
+"Contém uma chave AES criptografada com RSA"
+"Mas não tenho a chave privada RSA..." ❌ NÃO CONSEGUE ABRIR
+"A chave privada está segura com passphrase no meu laptop"
+→ Arquivo é inútil sem a chave privada!
+
+PADRÃO INDUSTRIAL - TLS/HTTPS:
+Este mesmo padrão é usado em TLS (https://), o protocolo que protege
+toda a internet:
+1. Criptografia simétrica (AES) protege os dados em volume
+2. Criptografia assimétrica (RSA) protege a chave simétrica inicial
+
+A internet usa exatamente a mesma combinação porque:
+- É rápida (AES)
+- É segura (RSA protege a chave)
+- É comprovada (usado por bilhões de pessoas)
+
+================================================================================
+6. CRIPTOGRAFIA - VERIFICAÇÃO DE INTEGRIDADE: SHA-256
+================================================================================
+
+O QUÊ É:
+SHA-256 (Secure Hash Algorithm 256-bit) é um algoritmo criptográfico de hash.
+Recebe qualquer entrada e produz um hash único de 256 bits (64 caracteres hex).
+É determinístico: mesma entrada = mesmo hash sempre.
+É unidirecional: impossível reconstruir entrada a partir do hash.
+
+PARA QUE ESTÁ USANDO:
+- Verificar que o backup não foi corrompido durante transmissão
+- Validar autenticidade do arquivo persistido
+
+COMO FUNCIONA:
+
+BACKUP:
+Arquivo compactado: estoque.tar.gz
+         ↓
+  sha256(arquivo) → "f1d2d2f924e986ac86fdf7b36c94bcad46221b4cf539b37a0f4a3ff60c6b8c6d"
+         ↓
+  Armazenado no JSON:
+  {
+    "ciphertext_sha256": "f1d2d2f924e986ac86fdf7b36c94bcad46221b4cf539b37a0f4a3ff60c6b8c6d"
+  }
+
+RESTORE:
+1. Ler arquivo backup
+2. Calcular sha256(arquivo) → "f1d2d2f924e986ac86fdf7b36c94bcad..."
+3. Comparar com hash armazenado
+4. Se diferentes: ARQUIVO FOI CORRUPTO! Abortar restore.
+5. Se iguais: OK, prosseguir com descriptografia
+
+```python
+import hashlib
+
+# Calcular
+arquivo_hash = hashlib.sha256(conteudo_arquivo).hexdigest()
+
+# Comparar
+if arquivo_hash == hash_esperado:
+    print("✓ Arquivo íntegro")
+else:
+    print("✗ Arquivo corrompido!")
+```
+
+POR QUE SHA-256 E NÃO SHA-1/MD5:
+- MD5: Quebrado cryptanaliticamente, colisões encontradas
+- SHA-1: Quebrado, NIST recomenda descontinuar
+- SHA-256: Seguro até 2030+, recomendado por NIST
+- SHA-512: Ainda mais seguro mas desnecessário para este uso
+
+================================================================================
+7. COMPRESSÃO: TAR + GZIP
+================================================================================
+
+O QUÊ É:
+- TAR (Tape Archive): formato que junta múltiplos arquivos em um
+- GZIP (GNU Zip): algoritmo de compressão que reduz tamanho
+
+PARA QUE ESTÁ USANDO:
+- Compactar arquivo estoque.db antes de criptografar
+- Reduzir tamanho de transmissão para Google Drive
+- Histórico de backups sem ocupar 200GB de espaço
+
+COMO FUNCIONA:
+
+BACKUP (Compressão):
+estoque.db (50MB)
+    ↓
+  tar c estoque.db → estoque.tar (50MB, sem compressão)
+    ↓
+  gzip estoque.tar → estoque.tar.gz (5MB, comprimido)
+    ↓
+  [Encriptar estoque.tar.gz com AES-256-GCM]
+    ↓
+  estoque_backup_20260603_120000.enc.json (5.1MB, criptografado)
+
+RESTORE (Descompressão):
+estoque_backup_20260603_120000.enc.json
+    ↓
+  [Descriptografar com AES-256-GCM]
+    ↓
+  estoque.tar.gz (5MB, descriptografado)
+    ↓
+  tar xzf estoque.tar.gz
+    ↓
+  estoque.db (50MB, restaurado)
+
+```python
+import tarfile
+
+# Comprimir
+with tarfile.open("estoque.tar.gz", "w:gz") as tar:
+    tar.add("estoque.db", arcname="estoque.db")
+
+# Descomprimir
+with tarfile.open("estoque.tar.gz", "r:gz") as tar:
+    tar.extractall()
+```
+
+POR QUE USAR TAR + GZIP:
+- Reduz tamanho de 50MB para ~5MB (90% de redução!)
+- Economiza espaço em disco
+- Economiza banda de internet para Google Drive
+- Padrão Unix consolidado há 40 anos
+- Nenhuma perda de dados (compressão sem perda)
+
+POR QUE NÃO ZIP:
+- ZIP também seria funcional
+- TAR é mais portável em Unix/Linux
+- GZIP é mais uniforme que ZIP (TAR | GZIP pipeline)
+- Ambos funcionariam, TAR/GZIP é preferido em Linux
+
+================================================================================
+8. INTEGRAÇÃO COM NUVEM: GOOGLE DRIVE + OAUTH 2.0
+================================================================================
+
+O QUÊ É:
+Google Drive é serviço de armazenamento em nuvem do Google.
+OAuth 2.0 é protocolo de autenticação que permite acesso a contas Google sem
+armazenar senhas.
+
+PARA QUE ESTÁ USANDO:
+- Enviar backups criptografados para Google Drive
+- Acesso remoto aos backups sem risco local
+- Redundância: dados locais + backup em nuvem
+- Acesso de múltiplos dispositivos aos backups
+
+COMO FUNCIONA:
+
+FLUXO OAUTH 2.0 DE USUÁRIO (oauth_user):
+
+1. Primeira vez que usuario executa backup:
+   - Sistema abre navegador
+   - Redireciona para login Google
+   - Usuario entra com gmail.com
+   - Google pergunta: "Permitir acesso ao StockFlow?"
+   - Usuario clica "Sim"
+   - Google gera token_google_drive.json
+   - Token é armazenado localmente
+
+2. Próximos backups:
+   - Sistema lê token_google_drive.json
+   - Usa token para acessar Google Drive
+   - Envia arquivo sem pedir nova autenticação
+
+CÓDIGO:
+```python
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+
+SCOPES = ['https://www.googleapis.com/auth/drive.file']
+
+# Primeira vez
+flow = InstalledAppFlow.from_client_secrets_file(
+    'credentials.json', SCOPES)
+creds = flow.run_local_server(port=0)
+
+# Salvar token para reutilizar
+with open('token_google_drive.json', 'w') as token:
+    token.write(creds.to_json())
+
+# Próximas vezes
+creds = Credentials.from_authorized_user_file('token_google_drive.json')
+
+# Usar credenciais para acessar Drive
+drive_service = build('drive', 'v3', credentials=creds)
+
+# Upload
+file_metadata = {'name': 'backup.enc.json'}
+file = drive_service.files().create(
+    body=file_metadata,
+    media_body=MediaFileUpload('backup.enc.json'),
+    fields='id'
+).execute()
+```
+
+SEGURANÇA:
+- Senha Google NUNCA é armazenada localmente
+- Token pode expirar (refresh token automático)
+- Token pode ser revogado a qualquer momento
+- Arquivo enviado para Drive permanece criptografado (Google não consegue ler)
+
+POR QUE GOOGLE DRIVE:
+1. Integrado ao Android/Chromebook/PC Windows
+2. Interface web amigável
+3. Gratuito até 15GB
+4. Sincronização automática em dispositivos
+5. Histórico de versões (recuperar versão anterior do arquivo)
+
+POR QUE OAUTH 2.0:
+1. Seguro - senha nunca compartilhada com aplicação
+2. Padrão industrial - usado por 99% das apps
+3. Token pode ser revogado sem alterar senha
+4. Granulação de permissões - app só acessa o que precisa
+
+================================================================================
+9. MANIPULAÇÃO DE DADOS TABULARES: PANDAS
+================================================================================
+
+O QUÊ É:
+Pandas é biblioteca Python para manipulação de dados em tabelas (DataFrames).
+Oferece operações similares a SQL mas em Python.
+
+PARA QUE ESTÁ USANDO:
+- Transformar dados do SQLite em tabelas
+- Filtrar, agrupar, somar dados para relatórios
+- Exportar dados para Excel
+
+COMO FUNCIONA:
+
+EXEMPLO - Gerar Relatório de Entradas por Período:
+
+Passo 1: Buscar dados do SQLite
+```python
+query = """
+SELECT p.nome, SUM(m.quantidade) as total_entrada
+FROM movimentacoes m
+JOIN produtos p ON m.produto_id = p.id
+WHERE m.tipo = 'entrada'
+  AND DATE(m.data_movimentacao) BETWEEN '2026-01-01' AND '2026-06-03'
+GROUP BY p.nome
+ORDER BY total_entrada DESC
+"""
+dados = pd.read_sql(query, self.conexao)
+```
+
+Passo 2: Resultado é um DataFrame (tabela Python)
+┌─────────────┬───────────────┐
+│ nome        │ total_entrada │
+├─────────────┼───────────────┤
+│ Vinho Tinto │ 150           │
+│ Cerveja     │ 300           │
+│ Água        │ 500           │
+└─────────────┴───────────────┘
+
+Passo 3: Operações em pandas
+```python
+media = dados['total_entrada'].mean()
+maior = dados['total_entrada'].max()
+soma = dados['total_entrada'].sum()
+```
+
+Passo 4: Exportar para Excel (ver openxl abaixo)
+
+POR QUE PANDAS:
+1. Poderosa - operações complexas em poucas linhas
+2. Rápida - otimizada em C internamente
+3. Integrada com SQL - ler direto de bancos
+4. Fácil manipulação - filtros, agrupamentos, pivôs
+5. Padrão de facto em análise de dados Python
+
+================================================================================
+10. EXPORTAÇÃO DE EXCEL: OPENPYXL
+================================================================================
+
+O QUÊ É:
+OpenPyXL é biblioteca Python que lê e escreve arquivos Excel (.xlsx).
+Excel (.xlsx) é formato padronizado para planilhas (Office Open XML).
+
+PARA QUE ESTÁ USANDO:
+- Exportar relatórios em Excel
+- Permitir análise posterior em Excel/Calc
+- Formato universal que tous conseguem abrir
+
+COMO FUNCIONA:
+
+FLUXO - Exportar Relatório de Produtos:
+
+Passo 1: Dados em Pandas
+```python
+dados = pd.read_sql("SELECT * FROM produtos", conexao)
+```
+
+Passo 2: Escrever em Excel usando OpenPyXL
+```python
+dados.to_excel('relatorio_produtos.xlsx', index=False)
+```
+
+Internamente, OpenPyXL:
+- Cria arquivo ZIP (Excel é ZIP com XML dentro!)
+- Cria estrutura de pastas: _rels/, xl/, [Content_Types].xml
+- Escreve dados em xl/worksheets/sheet1.xml
+- Cria índices em xl/workbook.xml
+- Compacta tudo em .xlsx
+
+Resultado: arquivo relatorio_produtos.xlsx com:
+- Cabeçalhos formatados
+- Dados em colunas
+- Abas/sheets podem ter múltiplas tabelas
+
+POR QUE OPENPYXL:
+1. Simples - uma linha de código exporta tudo
+2. Nenhuma dependência externa (Excel não precisa estar instalado)
+3. Compatível com Excel, Calc, Google Sheets
+4. Suporta formatação (cores, larguras, filtros)
+5. Rápido mesmo com milhares de linhas
+
+POR QUE NÃO XLSXWRITER:
+- XlsxWriter também funciona
+- OpenPyXL é mais flexível após criação
+- Ambos seriam boas escolhas
+
+================================================================================
+11. MANIPULAÇÃO DE DATAS: PYTHON-DATEUTIL
+================================================================================
+
+O QUÊ É:
+python-dateutil é biblioteca que estende manipulação de datas do Python.
+Oferece parsing de strings de data, operações com fusos horários, etc.
+
+PARA QUE ESTÁ USANDO:
+- Converter strings ISO 8601 para objetos datetime
+- Manipular datas em operações de relatório
+- Calcular períodos (ex: últimos 30 dias)
+
+COMO FUNCIONA:
+
+EXEMPLO:
+```python
+from dateutil import parser
+
+# Parser de string em datetime
+data_str = "2026-06-03T14:30:00"
+data = parser.parse(data_str)
+
+# Agora é um objeto datetime
+print(data.year)      # 2026
+print(data.month)     # 6
+print(data.day)       # 3
+print(data.hour)      # 14
+
+# Manipulação
+data_passada = data - timedelta(days=7)  # Há 7 dias atrás
+```
+
+ONDE USAMOS:
+- Parsing de datas de backup
+- Cálculos de período para filtros de relatório
+- Conversão de ISO 8601 (formato padrão internacional)
+
+POR QUE USAR:
+- Python nativo tem datetime mas é limitado
+- python-dateutil tem parsing inteligente
+- Suporta ISO 8601
+- Usado em quase todos os projetos Python que lidam com datas
+
+================================================================================
+12. AGENDAMENTO DE TAREFAS: SCHEDULE
+================================================================================
+
+O QUÊ É:
+Schedule é biblioteca leve para agendar tarefas em Python.
+Permite agendar função para rodar em horário específico ou intervalo.
+
+PARA QUE ESTÁ USANDO:
+- Agendamento futuro de backups automáticos
+- Sincronização periódica com Google Drive
+- Mantida para extensões futuras
+
+COMO FUNCIONA:
+
+```python
+import schedule
+import time
+
+# Agendar backup diário às 23h
+schedule.every().day.at("23:00").do(fazer_backup)
+
+# Agendar a cada 6 horas
+schedule.every(6).hours.do(sincronizar_drive)
+
+# Loop principal
+while True:
+    schedule.run_pending()
+    time.sleep(1)
+```
+
+POR QUE SCHEDULE:
+- Simples - sintaxe clara
+- Leve - sem dependências pesadas
+- Suficiente para este projeto
+- Não requer cron ou systemd (funciona em Windows também)
+
+POR QUE NÃO APScheduler:
+- APScheduler é mais robusto mas overhead para projeto pequeno
+- Schedule é suficiente para backup simples
+
+================================================================================
+13. LOGGING: MÓDULO LOGGING PADRÃO PYTHON
+================================================================================
+
+O QUÊ É:
+logging é módulo padrão do Python para registrar eventos da aplicação.
+Mais robusto que print() - oferece níveis (DEBUG, INFO, WARNING, ERROR).
+
+PARA QUE ESTÁ USANDO:
+- Registrar eventos de backup (sucesso, erro, corrupção)
+- Manter arquivo de log para auditar o que aconteceu
+- DEBUG de problemas em produção
+
+COMO FUNCIONA:
+
+```python
+import logging
+
+logger = logging.getLogger("backup_offsite")
+logger.setLevel(logging.INFO)
+
+# Handler para arquivo
+handler = logging.FileHandler("backup.log")
+logger.addHandler(handler)
+
+# Registrar eventos
+logger.info("Backup iniciado")
+logger.warning("Arquivo grande, pode demorar")
+logger.error("Falha na descriptografia")
+```
+
+Arquivo backup.log resulta em:
+```
+2026-06-03 14:30:00 | INFO | Backup iniciado
+2026-06-03 14:30:05 | WARNING | Arquivo grande, pode demorar
+2026-06-03 14:30:10 | ERROR | Falha na descriptografia
+```
+
+ONDE USAMOS:
+- scripts/backup_offsite.py registra todo o fluxo de backup
+- Arquivo: outputs/logs/backup.log
+- Rastrear cada backup realizado, sucesso/falha, checksum
+
+POR QUE LOGGING:
+- Profissional - padrão da indústria
+- Persistente - arquivo de auditoria
+- Estruturado - níveis de severidade
+- Debug facilita troubleshooting
+
+================================================================================
+14. PERSISTÊNCIA EM MEMÓRIA: SQLITE3 (Módulo Padrão)
+================================================================================
+
+O QUÊ É:
+sqlite3 é módulo padrão do Python (vem integrado).
+Fornece interface para conectar e manipular bancos SQLite.
+
+PARA QUE ESTÁ USANDO:
+- Interface Python para operações CRUD
+- Executar queries SQL
+- Gerenciar transações
+
+COMO FUNCIONA:
+
+```python
+import sqlite3
+
+# Conectar
+conn = sqlite3.connect("estoque.db")
+
+# Executar query
+cursor = conn.execute("SELECT * FROM produtos WHERE id = ?", (1,))
+resultado = cursor.fetchone()
+
+# Inserir
+conn.execute("INSERT INTO produtos (nome, preco) VALUES (?, ?)", ("Vinho", 25.50))
+conn.commit()
+
+# Fechar
+conn.close()
+```
+
+FEATURES:
+- Prepared statements (?) - proteção contra SQL injection
+- row_factory = sqlite3.Row - resultado como dicionário
+- PRAGMA foreign_keys - ativa integridade referencial
+- Transações ACID
+
+POR QUE INCLUSO:
+- Vem com Python nativo
+- Não precisa instalar nada
+- Interface simples e pythônica
+- Performance suficiente
+
+================================================================================
+15. SERIALIZAÇÃO JSON: MÓDULO JSON PADRÃO
+================================================================================
+
+O QUÊ É:
+JSON (JavaScript Object Notation) é formato padrão para dados estruturados.
+Módulo json do Python serializa/desserializa Python ↔ JSON.
+
+PARA QUE ESTÁ USANDO:
+- Envelope de backup: armazenar metadados, chaves, checksum em JSON
+- Configuração de backup: config_backup.json
+- Histórico de backups: backup_history.json
+
+COMO FUNCIONA:
+
+BACKUP JSON ENVELOPE:
+```python
+import json
+
+envelope = {
+    "version": "1",
+    "created_at": "2026-06-03T14:30:00+00:00",
+    "algorithms": {
+        "content_encryption": "AES-256-GCM",
+        "key_wrapping": "RSA-OAEP-SHA256"
+    },
+    "payload": {
+        "wrapped_aes_key_b64": "MIIBIjANB...",
+        "nonce_b64": "abc123xyz...",
+        "ciphertext_b64": "aGVsbG8d...",
+        "ciphertext_sha256": "f1d2d2f..."
+    }
+}
+
+# Salvar
+with open("backup.enc.json", "w") as f:
+    json.dump(envelope, f, indent=2)
+
+# Ler
+with open("backup.enc.json", "r") as f:
+    envelope = json.load(f)
+```
+
+ARQUIVO RESULTANTE:
+```json
+{
+  "version": "1",
+  "created_at": "2026-06-03T14:30:00+00:00",
+  "algorithms": {
+    "content_encryption": "AES-256-GCM",
+    "key_wrapping": "RSA-OAEP-SHA256"
+  },
+  "payload": {
+    "wrapped_aes_key_b64": "MIIBIjANB...",
+    "nonce_b64": "abc123xyz...",
+    "ciphertext_b64": "aGVsbG8d...",
+    "ciphertext_sha256": "f1d2d2f..."
+  }
+}
+```
+
+POR QUE JSON:
+- Padrão universal
+- Legível para humanos (para auditoria)
+- Fácil de parsear
+- Suporte nativo em Python
+- Compatível com APIs web
+
+================================================================================
+16. PROCESSAMENTO DE LINHAS DE COMANDO: ARGPARSE
+================================================================================
+
+O QUÊ É:
+argparse é módulo padrão do Python para processar argumentos de linha de comando.
+Permite CLI com flags, opções, help automático.
+
+PARA QUE ESTÁ USANDO:
+- Executar backup via terminal
+- Executar restore via terminal
+- Modo verbose/silencioso
+
+COMO FUNCIONA:
+
+```python
+import argparse
+
+parser = argparse.ArgumentParser(description="Backup de estoque")
+parser.add_argument("--backup", action="store_true", help="Realizar backup")
+parser.add_argument("--restore", action="store_true", help="Restaurar backup")
+parser.add_argument("--file", type=str, help="Arquivo de backup")
+parser.add_argument("--verbose", action="store_true", help="Saída detalhada")
+
+args = parser.parse_args()
+
+if args.backup:
+    fazer_backup(verbose=args.verbose)
+elif args.restore:
+    restaurar_backup(args.file, verbose=args.verbose)
+```
+
+USO:
+```bash
+python backup_offsite.py --backup --verbose
+python backup_offsite.py --restore --file backup_20260603.enc.json
+python backup_offsite.py --help
+```
+
+POR QUE ARGPARSE:
+- Genra help automático
+- Valida argumentos
+- Padrão em Python
+- Professionaliza CLI
+
+================================================================================
+17. TIPOS: TYPING (Módulo Padrão)
+================================================================================
+
+O QUÊ É:
+typing oferece anotações de tipo para Python.
+Ajuda IDE a autocompletar e ferramentas a detectar erros.
+
+PARA QUE ESTÁ USANDO:
+- Anotações de tipo em funções
+- Melhor autocompletar e documentação
+
+COMO FUNCIONA:
+
+```python
+from typing import Dict, List, Optional
+
+def buscar_usuario(username: str) -> Optional[Dict[str, str]]:
+    """Busca usuário no banco, retorna None se não encontra."""
+    resultado: Dict[str, str] = {...}
+    return resultado
+
+def listar_produtos() -> List[str]:
+    """Retorna lista de nomes de produtos."""
+    return ["Vinho", "Cerveja"]
+```
+
+IDE reconhece tipos e oferece autocompletar:
+- resultado. → mypy sabe que resultado é dict
+- str não tem .upper() em não existiria erro de type
+
+POR QUE TYPING:
+- Menos bugs
+- Melhor documentação
+- IDE mais inteligente
+- Opcional mas recomendado
+
+================================================================================
+18. MANIPULAÇÃO DE CAMINHOS: PATHLIB
+================================================================================
+
+O QUÊ É:
+pathlib oferece interface orientada a objetos para caminhos de arquivo.
+Mais Pythônico que usar strings com "/".
+
+PARA QUE ESTÁ USANDO:
+- Manipular caminhos de backup, logs, chaves
+- Verificar existência de arquivos
+- Criar diretórios recursivamente
+
+COMO FUNCIONA:
+
+```python
+from pathlib import Path
+
+# Criar caminho
+backup_dir = Path("outputs/backups")
+arquivo = backup_dir / "backup_20260603.enc.json"  # Concatenar
+
+# Verificar existência
+if arquivo.exists():
+    print(f"Arquivo existe: {arquivo}")
+
+# Criar diretório recursivo
+arquivo.parent.mkdir(parents=True, exist_ok=True)
+
+# Ler arquivo
+conteudo = arquivo.read_text()
+
+# Escrever arquivo
+arquivo.write_text(conteudo)
+
+# Nome do arquivo
+print(arquivo.name)  # "backup_20260603.enc.json"
+
+# Extensão
+print(arquivo.suffix)  # ".json"
+
+# Diretório pai
+print(arquivo.parent)  # "outputs/backups"
+```
+
+POR QUE PATHLIB:
+- Mais legível que strings
+- Portável (funciona em Windows e Unix)
+- Seguro - evita bugs de separadores "\" vs "/"
+- Mais Pythônico
+
+================================================================================
+19. VARIÁVEIS DE AMBIENTE: OS E LOAD_DOTENV
+================================================================================
+
+O QUÊ É:
+Variáveis de ambiente armazenam configurações sem hardcodar no código.
+load_dotenv (do python-dotenv) lê arquivo .env.
+
+PARA QUE ESTÁ USANDO:
+- Armazenar caminho para chaves RSA
+- Armazenar credenciais Google (credentials.json)
+- Modo DEBUG vs PRODUÇÃO
+
+COMO FUNCIONA:
+
+Arquivo .env:
+```
+PRIVATE_KEY_PATH=/home/user/.stockflow/private_key.pem
+PRIVATE_KEY_PASSPHRASE=meu_senha_secreta
+GOOGLE_CREDENTIALS=./credentials.json
+```
+
+Código Python:
+```python
+from dotenv import load_dotenv
+import os
+
+load_dotenv(".env")
+
+private_key_path = os.getenv("PRIVATE_KEY_PATH")
+passphrase = os.getenv("PRIVATE_KEY_PASSPHRASE")
+google_creds = os.getenv("GOOGLE_CREDENTIALS")
+```
+
+POR QUE USAR:
+- Não committa senhas no Git
+- Fácil trocar configuração sem mudar código
+- Segredo fica fora do código fonte
+- Padrão industrial para configurações
+
+================================================================================
+20. MULTI-THREADING: THREADING
+================================================================================
+
+O QUÊ É:
+threading permite executar múltiplas tarefas "simultaneamente" em Python.
+Útil para operações longas que não bloqueiam UI.
+
+PARA QUE ESTÁ USANDO:
+- Executar backup em background (não congela GUI)
+- Sincronizar backups pendentes sem pausar operação
+
+COMO FUNCIONA:
+
+```python
+import threading
+
+def backup_longo():
+    # Demora 5 minutos
+    fazer_backup_completo()
+    print("Backup concluído")
+
+# Na interface GUI:
+# Sem threading (RUIM - congela UI):
+# backup_longo()  # UI fica travada por 5 min
+
+# Com threading (BOM - UI responsiva):
+thread = threading.Thread(target=backup_longo)
+thread.daemon = True  # Encerra ao fechar app
+thread.start()
+# UI continua responsiva enquanto backup roda
+
+# Aguardar conclusão
+thread.join()  # Aguarda thread terminar
+```
+
+ONDE USAMOS:
+- GUI aguarda backup terminar sem congelar
+- Usuário pode continuar usando aplicação
+- Modal de progresso mientras backup sincroniza
+
+POR QUE THREADING:
+- GUI responsiva
+- Melhor experiência de usuário
+- Operações longas não travam a aplicação
+
+POR QUE NÃO ASYNC/AWAIT:
+- Threading é simples para este caso
+- Async é mais complexo e overhead
+- Threading suficiente para I/O simples
+
+================================================================================
+21. SCRIPTS DE SHELL: BASH/ZSH
+================================================================================
+
+O QUÊ É:
+Arquivo executável em shell (bash/zsh) que automatiza início da aplicação.
+
+ARQUIVO: executar.sh
+
+PARA QUE ESTÁ USANDO:
+- Ponto de entrada único do usuário
+- Criar venv automaticamente
+- Instalar dependências
+- Verificar Python 3.12
+
+COMO FUNCIONA:
+
+```bash
+#!/bin/bash
+
+# Verificar Python
+if ! command -v python3 &> /dev/null; then
+    echo "Python 3 não encontrado"
+    exit 1
+fi
+
+# Criar venv se não existe
+if [ ! -d ".venv" ]; then
+    python3 -m venv .venv
+    echo "✓ Virtual environment criado"
+fi
+
+# Ativar venv
+source .venv/bin/activate
+
+# Instalar dependências
+pip install -q -r requirements.txt
+
+# Executar aplicação
+python frontend/gui.py
+```
+
+RESULTADO:
+Usuário executa `./executar.sh` e tudo é automatizado.
+
+POR QUE USAR:
+- Simplifica para usuário não-técnico
+- Garante ambiente isolado (venv)
+- Reproduzível em múltiplas máquinas
+- Profissionaliza distribuição
+
+================================================================================
+22. GERENCIAMENTO DE DEPENDÊNCIAS: REQUIREMENTS.TXT + PIP
+================================================================================
+
+O QUÊ É:
+requirements.txt lista todas as dependências Python do projeto.
+pip é o gerenciador de pacotes do Python.
+
+ARQUIVO REQUIREMENTS.TXT:
+```
+pandas==2.3.1
+openpyxl==3.1.5
+python-dateutil==2.9.0.post0
+bcrypt==4.2.0
+cryptography==44.0.1
+google-api-python-client==2.164.0
+google-auth==2.38.0
+google-auth-oauthlib==1.2.1
+schedule==1.2.2
+```
+
+INSTALAÇÃO:
+```bash
+pip install -r requirements.txt
+```
+
+POR QUE REQUIREMENTS.TXT:
+- Reproduzibilidade - mesma versão sempre
+- Portabilidade - funciona em qualquer máquina
+- Limpeza - não instala dependências acidentais
+- Versionamento - rastreia mudanças de dependências
+
+POR QUE VERSÕES FIXAS:
+- pandas==2.3.1 (exatamente 2.3.1)
+- Evita rotura por atualizações incompatíveis
+- Importante para produção
+
+================================================================================
+23. AMBIENTE VIRTUAL: VENV
+================================================================================
+
+O QUÊ É:
+Venv cria ambiente Python isolado que não afeta sistema global.
+Cada projeto tem suas próprias dependências.
+
+COMO FUNCIONA:
+
+```bash
+# Criar venv
+python3 -m venv .venv
+
+# Ativar venv
+source .venv/bin/activate  # Linux/Mac
+.\.venv\Scripts\activate   # Windows
+
+# Agora pip instala para este venv, não global
+pip install pandas
+```
+
+ESTRUTURA:
+```
+.venv/
+├── bin/
+│   ├── python        (interpretador)
+│   ├── pip           (gerenciador)
+│   └── python3.12
+├── lib/
+│   └── python3.12/site-packages/  (dependências)
+└── include/
+```
+
+POR QUE USAR VENV:
+- Isolamento - não afeta sistema
+- Limpeza - delete .venv limpa tudo
+- Reprodução - outro usuário cria venv idêntico
+- Profissional - padrão da indústria
+
+================================================================================
+24. CONTROLE DE VERSÃO: GIT
+================================================================================
+
+O QUÊ É:
+Git é sistema de controle de versão distribuído.
+Rastreia mudanças no código ao longo do tempo.
+
+PARA QUE ESTÁ USANDO:
+- Histórico de mudanças (who changed what when)
+- Branching para features/bugs
+- Reversão de mudanças
+- Colaboração entre desenvolvedores
+
+COMO FUNCIONA:
+
+```bash
+git init                  # Inicializar repositório
+git add arquivo.py        # Adicionar arquivo
+git commit -m "Adiciona feature X"  # Commitar
+git log                   # Ver histórico
+git diff                  # Ver mudanças
+git branch feature        # Criar branch
+git checkout feature      # Mudar para branch
+```
+
+POR QUE USAR:
+- Rastreabilidade - sabe exatamente quando bug foi introduzido
+- Colaboração - múltiplos desenvolvedores sem conflitos
+- Backup distribuído - código em múltiplos locais
+- Rollback fácil - reverter a versão anterior
+
+================================================================================
+RESUMO FINAL: POR QUE ESSA COMBINAÇÃO DE TECNOLOGIAS?
+================================================================================
+
+O StockFlow usa "stack" que é:
+✓ GRATUITO - nenhuma licença comercial
+✓ OPEN SOURCE - código transparente, comunidade revisa
+✓ MULTIPLATAFORMA - funciona Linux, Windows, macOS
+✓ SIMPLES - baixa curva de aprendizado
+✓ MADURO - tecnologias com 10+ anos de uso estável
+✓ SEGURO - padrões de segurança comprovados (bcrypt, AES-256, RSA)
+✓ ESCALÁVEL - começa pequeno, pode crescer
+✓ DOCUMENTADO - bibliotecas têm documentação oficial
+✓ VELOCIDADE DE DESENVOLVIMENTO - rápido fazer funcionar
+✓ CUSTO BAIXO - nenhuma infraestrutura cara
+
+STACK STOCKFLOW:
+┌──────────────────────────────────────┐
+│  GUI Desktop                         │
+│  Tkinter (Padrão Python)             │
+└──────────────┬───────────────────────┘
+               │
+┌──────────────▼───────────────────────┐
+│  Backend / Lógica                    │
+│  Python 3.12 + Pandas + Dateutil     │
+└──────────────┬───────────────────────┘
+               │
+┌──────────────▼───────────────────────┐
+│  Persistência                        │
+│  SQLite 3 (Relacional)               │
+└──────────────┬───────────────────────┘
+               │
+┌──────────────▼───────────────────────┐
+│  Segurança                           │
+│  Bcrypt (Senhas) + RSA+AES (Backup)  │
+└──────────────┬───────────────────────┘
+               │
+┌──────────────▼───────────────────────┐
+│  Nuvem                               │
+│  Google Drive + OAuth 2.0            │
+└──────────────────────────────────────┘
+
+PRÓXIMAS EVOLUÇÕES POSSÍVEIS:
+1. FastAPI + PostgreSQL - escalável para múltiplos usuários simultaneamente
+2. React frontend - interface web moderna
+3. Docker - distribuição padronizada
+4. Kubernetes - orquestração em nuvem
+5. Telegram bot - notificações de backup
+6. Mobile app - Kivy ou React Native
+
+MAS POR ENQUANTO:
+O stack atual é IDEAL para pequenas empresas (1-50 usuários) que precisam de:
+- Controle local de estoque
+- Backup seguro
+- Autenticação básica
+- Relatórios simples
+- Sem infraestrutura complexa
+
+================================================================================
+FIM DO DOCUMENTO
+================================================================================
+Desenvolvido com ❤️ para StockFlow v2.0
+Data: 03 de junho de 2026

@@ -1,0 +1,11 @@
+# Dependências essenciais para Sistema de Estoque com Interface Gráfica
+# Dependência de sistema (Linux): sudo apt install -y python3-tk
+pandas==2.3.1           # Manipulação de dados para relatórios
+openpyxl==3.1.5         # Exportação de relatórios para Excel
+python-dateutil==2.9.0.post0  # Manipulação de datas
+bcrypt==4.2.0           # Hash seguro de senhas para autenticação
+cryptography==44.0.1    # Criptografia AES-256-GCM e RSA-OAEP
+google-api-python-client==2.164.0  # Upload de backup para Google Drive API
+google-auth==2.38.0     # Autenticacao para APIs Google
+google-auth-oauthlib==1.2.1  # OAuth de usuario (Meu Drive)
+schedule==1.2.2         # Agendamento de tarefas (ex: backup diário)

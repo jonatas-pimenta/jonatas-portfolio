@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=STOCKFLOW - FLUXO DE ESTOQUE COM CRIPTOGRAFIA E BACKUP EM NUVEM
+Comment=Fluxo de estoque com criptografia e backup em nuvem
+Exec=/home/jh/Documentos/Projetos/jonatas-portfolio/dev/StockFlow_v2/executar.sh
+Icon=/home/jh/Documentos/Projetos/jonatas-portfolio/dev/StockFlow_v2/icons/StockFlow.png
+Terminal=true
+Categories=Utility;

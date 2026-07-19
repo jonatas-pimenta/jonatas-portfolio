@@ -1,0 +1,3 @@
+"Tabela","Colunas Principais","Relações/Chaves"
+"produtos","id (PK), nome, categoria, preco, quantidade, estoqueminimo, fornecedor, datacadastro","'-"
+"movimentacoes","id (PK), produto_id (FK), tipo (entrada/saida), quantidade, datamovimentacao, observacao, usuario","produto_id → produtos.id"

@@ -1,0 +1,65 @@
+# Arquivos Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+.venv/
+
+# Credenciais e segredos locais
+credentials.json
+credentials_oauth.json
+token_google_drive.json
+config_backup.json
+*.service-account.json
+keys/*.json
+keys/*.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+nohup.out
+
+# Database files
+*.db
+*.sqlite
+
+# Temporary files
+*.tmp
+*.temp
+
+# Artifacts de saida
+outputs/**
+!outputs/.gitkeep
+!outputs/backups/.gitkeep
+!outputs/logs/.gitkeep
+!outputs/restore_test/.gitkeep
+!outputs/reports/.gitkeep
+
+# Chaves de backup (somente exemplo; mantenha privadas fora do repo)
+keys/*.pem
+!keys/*_public.pem
+
+# Excel files
+*.xlsx
+*.xls
+*.mp4
+!requirements.txt
