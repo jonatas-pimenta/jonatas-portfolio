@@ -1437,5 +1437,5 @@ O stack atual é IDEAL para pequenas empresas (1-50 usuários) que precisam de:
 ================================================================================
 FIM DO DOCUMENTO
 ================================================================================
-Desenvolvido com ❤️ para StockFlow v2.0
+StockFlow v2.0
 Data: 03 de junho de 2026
