@@ -57,6 +57,7 @@ outputs/**
 # Chaves de backup (somente exemplo; mantenha privadas fora do repo)
 keys/*.pem
 !keys/*_public.pem
+keys/backup_public.pem
 
 # Excel files
 *.xlsx
