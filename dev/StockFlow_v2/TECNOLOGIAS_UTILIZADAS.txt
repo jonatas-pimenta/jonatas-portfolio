@@ -399,7 +399,7 @@ OPÇÃO 3: RSA + AES (O QUE FAZEMOS) ✓
 Vantagens:
 ✓ AES criptografa os 50MB rapidamente
 ✓ Chave AES é gerada aleatória a cada backup
-✓ Chave AES é protegida com RSA (chave pública)
+✓ Chave AES é protegida com RSA (chave pública gerada localmente)
 ✓ Se a chave privada RSA estiver offline, dados estão protegidos
 ✓ Mesmo que alguém roube o arquivo .enc.json, não consegue descriptografar
   sem a chave privada RSA
